@@ -2,10 +2,8 @@
 
 import { FormEvent, useEffect, useRef, useState } from 'react';
 import { track } from '@/lib/analytics';
-import { type LeadErrors, validateLead } from '@/lib/lead-schema';
+import { LEAD_VOLUMES, type LeadErrors, validateLead } from '@/lib/lead-schema';
 import { persistUtm, readPersistedUtm, readUtm } from '@/lib/utm';
-
-const volumes = ['Até 10 por semana', '11 a 20 por semana', '21 a 40 por semana', 'Mais de 40 por semana'];
 
 export function LeadForm() {
   const [errors, setErrors] = useState<LeadErrors>({});
@@ -80,7 +78,7 @@ export function LeadForm() {
         <span>Volume aproximado de atendimentos</span>
         <select name="volume" defaultValue="" aria-invalid={Boolean(errors.volume)}>
           <option value="" disabled>Selecione uma faixa</option>
-          {volumes.map((volume) => <option key={volume}>{volume}</option>)}
+          {LEAD_VOLUMES.map((volume) => <option key={volume}>{volume}</option>)}
         </select>
         {errors.volume ? <small className="field-error">{errors.volume}</small> : null}
       </label>
