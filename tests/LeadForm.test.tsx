@@ -13,4 +13,14 @@ describe('LeadForm', () => {
     expect(screen.getByText('Informe um WhatsApp com DDD.')).toBeInTheDocument();
     expect(screen.getByText('Selecione uma faixa de atendimentos.')).toBeInTheDocument();
   });
+
+  it('tracks the closing CTA independently from form validation', async () => {
+    const user = userEvent.setup();
+    window.dataLayer = [];
+    render(<LeadForm />);
+
+    await user.click(screen.getByRole('button', { name: /quero ver na minha rotina/i }));
+
+    expect(window.dataLayer).toContainEqual({ event: 'cta_click_closing' });
+  });
 });

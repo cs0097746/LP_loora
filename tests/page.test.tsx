@@ -17,13 +17,15 @@ describe('landing page', () => {
     ).toBeGreaterThanOrEqual(2);
 
     expect(
+      screen.getByRole('link', { name: /quero ver esse fluxo na minha rotina/i }),
+    ).toHaveAttribute('href', '#demo');
+
+    expect(
       screen.getByRole('heading', {
         name: /o que acontece entre uma sessão e outra/i,
       }),
     ).toBeInTheDocument();
 
-    expect(
-      screen.getByText(/novo contato chegou pelo whatsapp/i),
-    ).toBeInTheDocument();
+    expect(screen.getByText(/novo contato chegou pelo whatsapp/i)).toBeInTheDocument();
   });
 });
