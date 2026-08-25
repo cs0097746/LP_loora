@@ -2,8 +2,6 @@
 
 import type { UTMData } from './utm';
 
-type AnalyticsProperties = Record<string, string | number | boolean | undefined> & UTMData;
-
 declare global {
   interface Window {
     dataLayer?: Array<Record<string, unknown>>;
@@ -11,7 +9,7 @@ declare global {
   }
 }
 
-export function track(eventName: string, properties: AnalyticsProperties = {}) {
+export function track(eventName: string, properties: UTMData | Record<string, unknown> = {}) {
   if (typeof window === 'undefined') return;
 
   window.dataLayer?.push({ event: eventName, ...properties });

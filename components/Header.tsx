@@ -19,15 +19,11 @@ export function Header() {
         </nav>
 
         <div className="header-actions">
-          <TrackedLink
-            className="text-link header-login"
-            href={siteConfig.crmUrl}
-            eventName="crm_login_click"
-          >
+          <TrackedLink className="text-link header-login" href={siteConfig.crmUrl} eventName="crm_login_click">
             Entrar
           </TrackedLink>
           <TrackedLink className="button button-small" href="#demo" eventName="cta_click_header">
-            Ver funcionando
+            Ver a Loomie funcionando
           </TrackedLink>
         </div>
       </div>
