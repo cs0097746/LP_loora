@@ -31,12 +31,17 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Canal de leads não configurado.' }, { status: 503 });
   }
 
-  const response = await fetch(webhookUrl, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ ...parsed.data, source: 'loomie-psicologos-lp', createdAt: new Date().toISOString() }),
-    signal: AbortSignal.timeout(8000),
-  });
+  let response: Response;
+  try {
+    response = await fetch(webhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...parsed.data, source: 'loomie-psicologos-lp', createdAt: new Date().toISOString() }),
+      signal: AbortSignal.timeout(8000),
+    });
+  } catch {
+    return NextResponse.json({ error: 'Falha ao encaminhar lead.' }, { status: 502 });
+  }
 
   if (!response.ok) {
     return NextResponse.json({ error: 'Falha ao encaminhar lead.' }, { status: 502 });
