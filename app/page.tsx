@@ -1,3 +1,29 @@
+import { ClosingCTA } from '@/components/ClosingCTA';
+import { FAQ } from '@/components/FAQ';
+import { Footer } from '@/components/Footer';
+import { Header } from '@/components/Header';
+import { Hero } from '@/components/Hero';
+import { HowItWorks } from '@/components/HowItWorks';
+import { PainSequence } from '@/components/PainSequence';
+import { ProductShowcase } from '@/components/ProductShowcase';
+import { Security } from '@/components/Security';
+import { Workflow } from '@/components/Workflow';
+
 export default function HomePage() {
-  return <h1>Enquanto você atende, sua clínica continua funcionando.</h1>;
+  return (
+    <>
+      <Header />
+      <main>
+        <Hero />
+        <PainSequence />
+        <Workflow />
+        <ProductShowcase />
+        <HowItWorks />
+        <Security />
+        <FAQ />
+        <ClosingCTA />
+      </main>
+      <Footer />
+    </>
+  );
 }
