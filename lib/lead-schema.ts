@@ -1,5 +1,12 @@
 import type { UTMData } from './utm';
 
+export const LEAD_VOLUMES = [
+  'Até 10 por semana',
+  '11 a 20 por semana',
+  '21 a 40 por semana',
+  'Mais de 40 por semana',
+] as const;
+
 export type LeadInput = {
   name: string;
   whatsapp: string;
@@ -20,7 +27,9 @@ export function validateLead(input: LeadInput) {
   if (whatsapp.length < 10 || whatsapp.length > 13) {
     errors.whatsapp = 'Informe um WhatsApp com DDD.';
   }
-  if (!volume) errors.volume = 'Selecione uma faixa de atendimentos.';
+  if (!LEAD_VOLUMES.some((option) => option === volume)) {
+    errors.volume = 'Selecione uma faixa de atendimentos.';
+  }
 
   if (Object.keys(errors).length > 0) {
     return { success: false as const, errors };
