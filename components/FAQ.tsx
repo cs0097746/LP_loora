@@ -1,4 +1,7 @@
+'use client';
+
 import { faqItems } from '@/content/landing';
+import { track } from '@/lib/analytics';
 
 export function FAQ() {
   return (
@@ -11,7 +14,14 @@ export function FAQ() {
         </div>
         <div className="faq-list">
           {faqItems.map((item) => (
-            <details key={item.question}>
+            <details
+              key={item.question}
+              onToggle={(event) => {
+                if (event.currentTarget.open) {
+                  track('faq_open', { question: item.question });
+                }
+              }}
+            >
               <summary>{item.question}<span aria-hidden="true">+</span></summary>
               <p>{item.answer}</p>
             </details>

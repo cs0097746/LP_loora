@@ -1,3 +1,8 @@
+'use client';
+
+import { useEffect, useRef } from 'react';
+import { track } from '@/lib/analytics';
+import { TrackedLink } from './TrackedLink';
 import { BillingScene, PipelineScene, SchedulingScene, WhatsAppScene } from './product/ProductScenes';
 
 const showcases = [
@@ -32,8 +37,29 @@ const showcases = [
 ] as const;
 
 export function ProductShowcase() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+  const tracked = useRef(false);
+
+  useEffect(() => {
+    const element = sectionRef.current;
+    if (!element || typeof IntersectionObserver === 'undefined') return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (tracked.current || !entries.some((entry) => entry.isIntersecting)) return;
+        tracked.current = true;
+        track('product_showcase_view');
+        observer.disconnect();
+      },
+      { threshold: 0.35 },
+    );
+
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section className="section showcase-section" aria-labelledby="showcase-title">
+    <section ref={sectionRef} className="section showcase-section" aria-labelledby="showcase-title">
       <div className="shell">
         <div className="section-heading showcase-heading">
           <p className="section-label">Produto, não promessa</p>
@@ -53,6 +79,17 @@ export function ProductShowcase() {
               <div className="showcase-visual"><Scene /></div>
             </article>
           ))}
+        </div>
+
+        <div className="midpage-cta">
+          <div>
+            <span className="showcase-eyebrow">SEU FLUXO</span>
+            <strong>Quer ver essas etapas aplicadas ao seu consultório?</strong>
+          </div>
+          <TrackedLink className="button button-large" href="#demo" eventName="cta_click_midpage">
+            Quero ver esse fluxo na minha rotina
+            <span aria-hidden="true">↗</span>
+          </TrackedLink>
         </div>
       </div>
     </section>

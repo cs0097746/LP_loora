@@ -88,7 +88,12 @@ export function LeadForm() {
         <span>O que mais pesa hoje? <em>opcional</em></span>
         <textarea name="priority" rows={3} placeholder="Ex.: responder novos contatos, confirmar agenda, cobrar..." />
       </label>
-      <button className="button lead-submit" type="submit" disabled={status === 'sending'}>
+      <button
+        className="button lead-submit"
+        type="submit"
+        disabled={status === 'sending'}
+        onClick={() => track('cta_click_closing', readPersistedUtm())}
+      >
         {status === 'sending' ? 'Enviando…' : 'Quero ver na minha rotina'}
         <span aria-hidden="true">↗</span>
       </button>
