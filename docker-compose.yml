@@ -1,0 +1,23 @@
+name: loomie-lp-psicologos
+
+services:
+  lp_psicologos:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: loomie_lp_psicologos:latest
+    container_name: crm_lp_psicologos
+    restart: unless-stopped
+    env_file:
+      - .env.local
+    environment:
+      - PORT=3000
+      - HOSTNAME=0.0.0.0
+    expose:
+      - "3000"
+    networks:
+      - loomie-network
+
+networks:
+  loomie-network:
+    external: true
