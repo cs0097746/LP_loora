@@ -9,11 +9,9 @@ export const timelineEvents = [
 ] as const;
 
 export const painItems = [
-  ['Novo contato', 'Responder enquanto outra sessão está começando.'],
-  ['Agenda', 'Conferir horários, sugerir opções e lembrar da confirmação.'],
-  ['Remarcação', 'Voltar à agenda, negociar horário e reorganizar o fluxo.'],
-  ['Cobrança', 'Lembrar pagamentos sem misturar o papel clínico e o administrativo.'],
-  ['Follow-up', 'Não deixar contatos e pacientes sumirem no histórico do WhatsApp.'],
+  ['Novos contatos espalhados', 'Mensagens chegam quando você está atendendo e precisam continuar encontráveis depois.'],
+  ['Agenda entre sessões', 'Confirmações e reagendamentos criam um vai-e-volta que fragmenta o dia.'],
+  ['Follow-ups que dependem de lembrar', 'Quando a rotina aperta, o próximo passo fica preso na memória ou no histórico do WhatsApp.'],
 ] as const;
 
 export const workflowSteps = [
@@ -25,42 +23,42 @@ export const workflowSteps = [
 ] as const;
 
 export const howItWorks = [
-  ['Entendemos sua rotina', 'Mapeamos horários, mensagens, etapas e tarefas repetitivas do consultório.'],
-  ['Conectamos a operação', 'Configuramos CRM, WhatsApp e as automações que fazem sentido para o seu fluxo.'],
-  ['Você acompanha na Loomie', 'O operacional fica organizado em um único lugar, com você no controle das decisões.'],
+  ['O contato entra', 'Uma nova demanda administrativa chega e deixa de depender de uma conversa solta.'],
+  ['Loomie organiza', 'Dados, etapa, responsável e próximo passo ficam reunidos em um fluxo visível.'],
+  ['Você assume o que exige você', 'Quando existe uma decisão humana ou clínica, você recebe o contexto e continua no controle.'],
 ] as const;
 
 export const faqItems = [
-  {
-    question: 'Preciso trocar meu WhatsApp?',
-    answer: 'A implantação é desenhada para aproveitar o fluxo de WhatsApp da sua operação. Na demonstração, validamos o cenário técnico do seu número e explicamos a configuração indicada.',
-  },
-  {
-    question: 'Preciso entender de automação?',
-    answer: 'Não. A proposta é você definir regras da sua rotina — horários, etapas, mensagens e limites — enquanto a parte técnica fica na configuração da Loomie.',
-  },
   {
     question: 'A Loomie substitui meu atendimento?',
     answer: 'Não. A Loomie organiza tarefas administrativas e operacionais. Ela não substitui psicoterapia, avaliação, diagnóstico, atendimento de urgência ou decisões profissionais.',
   },
   {
-    question: 'Como funciona a implantação?',
-    answer: 'Começamos entendendo sua rotina, conectamos os canais e configuramos os fluxos escolhidos. O desenho final depende das automações que você quer usar.',
+    question: 'Preciso trocar meu WhatsApp?',
+    answer: 'Na demonstração, validamos o cenário técnico do seu número e mostramos a forma indicada de integrar o fluxo atual ao Loomie. A configuração depende do canal e da operação que você já usa.',
   },
   {
-    question: 'Posso começar com poucas automações?',
-    answer: 'Sim. A implantação pode priorizar os gargalos mais claros primeiro, como novos contatos, confirmação, organização do pipeline ou cobrança.',
+    question: 'Preciso entender de automação?',
+    answer: 'Não. Você define as regras da sua rotina — etapas, horários, lembretes e limites — e a configuração técnica é organizada na implantação.',
+  },
+  {
+    question: 'O que a Leora pode automatizar?',
+    answer: 'A Leora é posicionada como assistente operacional. Ela pode apoiar rotinas administrativas como organização de contatos, confirmações, lembretes e follow-ups conforme a configuração escolhida. Julgamento e conduta clínica continuam humanos.',
+  },
+  {
+    question: 'A Loomie funciona para consultórios pequenos?',
+    answer: 'Sim. Esta experiência foi desenhada especialmente para psicólogos autônomos e operações pequenas que ainda concentram WhatsApp, agenda e acompanhamento administrativo na própria profissional.',
+  },
+  {
+    question: 'Como funciona a implantação?',
+    answer: 'Primeiro entendemos sua rotina e seus gargalos. Depois configuramos o CRM e as automações priorizadas. A demonstração serve para validar o fluxo antes de definir a configuração comercial.',
   },
   {
     question: 'Como meus dados ficam organizados?',
-    answer: 'A operação é estruturada por workspace no CRM, com contatos, etapas e atividades reunidos no fluxo correspondente. Detalhes técnicos de segurança são apresentados conforme a configuração contratada.',
-  },
-  {
-    question: 'A Loomie funciona para clínicas pequenas?',
-    answer: 'Sim. Esta página é focada principalmente em psicólogos autônomos, mas clínicas pequenas com uma operação parecida também podem usar a mesma estrutura.',
+    answer: 'Contatos, etapas, responsáveis, tags e atividades administrativas ficam reunidos no workspace correspondente. Detalhes técnicos de segurança e tratamento de dados devem ser avaliados conforme a configuração contratada.',
   },
   {
     question: 'Quanto custa?',
-    answer: 'O valor depende do volume, dos canais e das automações escolhidas. Na demonstração, entendemos seu cenário e apresentamos a configuração comercial adequada sem inventar um pacote que não combine com a sua rotina.',
+    answer: 'O valor depende do volume, dos canais e das automações escolhidas. Na demonstração, entendemos o cenário e apresentamos a configuração comercial adequada ao seu consultório.',
   },
 ] as const;
