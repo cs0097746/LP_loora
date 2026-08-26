@@ -7,7 +7,7 @@ import { HowItWorks } from '@/components/HowItWorks';
 import { PainSequence } from '@/components/PainSequence';
 import { ProductShowcase } from '@/components/ProductShowcase';
 import { Security } from '@/components/Security';
-import { Workflow } from '@/components/Workflow';
+import { TrustStrip } from '@/components/TrustStrip';
 
 export default function HomePage() {
   return (
@@ -15,8 +15,8 @@ export default function HomePage() {
       <Header />
       <main>
         <Hero />
+        <TrustStrip />
         <PainSequence />
-        <Workflow />
         <ProductShowcase />
         <HowItWorks />
         <Security />
