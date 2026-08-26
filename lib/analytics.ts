@@ -1,0 +1,20 @@
+'use client';
+
+import type { UTMData } from './utm';
+
+declare global {
+  interface Window {
+    dataLayer?: Array<Record<string, unknown>>;
+    fbq?: (...args: unknown[]) => void;
+  }
+}
+
+export function track(eventName: string, properties: UTMData | Record<string, unknown> = {}) {
+  if (typeof window === 'undefined') return;
+
+  window.dataLayer?.push({ event: eventName, ...properties });
+
+  if (typeof window.fbq === 'function') {
+    window.fbq('trackCustom', eventName, properties);
+  }
+}

@@ -1,0 +1,76 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - feat/loomie-psychology-lp
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --legacy-peer-deps --no-audit --no-fund
+
+      - name: Tests
+        id: tests
+        continue-on-error: true
+        shell: bash
+        run: set -o pipefail; npm test 2>&1 | tee test.log
+
+      - name: Lint
+        id: lint
+        continue-on-error: true
+        shell: bash
+        run: set -o pipefail; npm run lint 2>&1 | tee lint.log
+
+      - name: Build
+        id: build
+        continue-on-error: true
+        shell: bash
+        run: set -o pipefail; npm run build 2>&1 | tee build.log
+
+      - name: Install Playwright Chromium
+        if: steps.build.outcome == 'success'
+        run: npx playwright install --with-deps chromium
+
+      - name: E2E
+        id: e2e
+        if: steps.build.outcome == 'success'
+        continue-on-error: true
+        shell: bash
+        run: set -o pipefail; npm run test:e2e 2>&1 | tee e2e.log
+
+      - name: Upload verification logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: verification-logs
+          path: |
+            test.log
+            lint.log
+            build.log
+            e2e.log
+
+      - name: Upload visual QA
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: visual-qa
+          if-no-files-found: ignore
+          path: |
+            test-results/landing-desktop.png
+            test-results/landing-mobile.png
+
+      - name: Verification gate
+        if: always()
+        shell: bash
+        run: |
+          test "${{ steps.tests.outcome }}" = "success"
+          test "${{ steps.lint.outcome }}" = "success"
+          test "${{ steps.build.outcome }}" = "success"
+          test "${{ steps.e2e.outcome }}" = "success"
