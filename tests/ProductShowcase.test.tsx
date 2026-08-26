@@ -17,8 +17,8 @@ class VisibleIntersectionObserver {
   thresholds = [0.35];
 }
 
-describe('ProductShowcase', () => {
-  it('tracks when product proof becomes visible', async () => {
+describe('ProductShowcase V2', () => {
+  it('tracks the real Kanban proof when product evidence becomes visible', async () => {
     window.dataLayer = [];
     Object.defineProperty(window, 'IntersectionObserver', {
       writable: true,
@@ -32,7 +32,7 @@ describe('ProductShowcase', () => {
     render(<ProductShowcase />);
 
     await waitFor(() => {
-      expect(window.dataLayer).toContainEqual({ event: 'product_showcase_view' });
+      expect(window.dataLayer).toContainEqual({ event: 'product_kanban_view' });
     });
   });
 });
