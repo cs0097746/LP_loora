@@ -1,0 +1,7 @@
+@media (max-width: 420px) {
+  /* The 420px breakpoint narrows the shell gutter from 16px to 14px. Keep the
+     full-bleed Leora proof aligned to that gutter so it never widens the page. */
+  .product-proof-automation {
+    margin-inline: -14px;
+  }
+}
