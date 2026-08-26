@@ -18,7 +18,34 @@ test('mobile preserves the primary CTA, product crop and reaches the demo form w
 
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   await expect(page.getByRole('img', { name: /Kanban do Loomie/i }).first()).toBeVisible();
-  expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
+
+  const overflow = await page.evaluate(() => {
+    const viewportWidth = window.innerWidth;
+    const offenders = Array.from(document.querySelectorAll<HTMLElement>('body *'))
+      .map((element) => {
+        const rect = element.getBoundingClientRect();
+        return {
+          tag: element.tagName.toLowerCase(),
+          className: typeof element.className === 'string' ? element.className : '',
+          left: Math.round(rect.left),
+          right: Math.round(rect.right),
+          width: Math.round(rect.width),
+        };
+      })
+      .filter(({ left, right }) => left < -1 || right > viewportWidth + 1)
+      .slice(0, 12);
+
+    return {
+      viewportWidth,
+      documentWidth: document.documentElement.scrollWidth,
+      offenders,
+    };
+  });
+
+  expect(
+    overflow.documentWidth,
+    `Mobile overflow: ${JSON.stringify(overflow)}`,
+  ).toBeLessThanOrEqual(overflow.viewportWidth + 1);
 
   await page.getByRole('link', { name: 'Ver a Loomie na minha rotina' }).click();
   await expect(page.locator('#demo')).toBeInViewport();
