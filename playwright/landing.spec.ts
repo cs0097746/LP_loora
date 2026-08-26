@@ -6,7 +6,14 @@ test('desktop leads with real Loomie product proof and a clear conversion path',
 
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Sua clínica continua andando');
   await expect(page.getByRole('link', { name: 'Ver a Loomie na minha rotina' })).toBeVisible();
-  await expect(page.getByRole('img', { name: /Kanban do Loomie/i }).first()).toBeVisible();
+
+  const heroKanban = page.getByRole('img', { name: /Kanban do Loomie/i }).first();
+  await expect(heroKanban).toBeVisible();
+  await expect.poll(
+    () => heroKanban.evaluate((image) => (image as HTMLImageElement).naturalWidth),
+    { message: 'Hero Kanban must decode before visual QA' },
+  ).toBeGreaterThan(0);
+
   await expect(page.getByRole('heading', { name: 'Quando você volta para o contato, o contexto ainda está lá.' })).toBeVisible();
 
   await page.screenshot({ path: 'test-results/landing-desktop.png', fullPage: true });
