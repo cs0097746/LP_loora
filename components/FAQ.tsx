@@ -8,10 +8,11 @@ export function FAQ() {
     <section className="section faq-section" id="faq" aria-labelledby="faq-title">
       <div className="shell faq-grid">
         <div className="faq-intro">
-          <p className="section-label">Dúvidas antes da demo</p>
-          <h2 id="faq-title">O que costuma aparecer antes de colocar a rotina para rodar.</h2>
-          <p>Sem letras miúdas e sem transformar automação administrativa em promessa clínica.</p>
+          <p className="section-label">Perguntas antes de decidir</p>
+          <h2 id="faq-title">O que vale esclarecer antes de levar a Loomie para a sua rotina.</h2>
+          <p>WhatsApp, automações, implantação e os limites entre operação e prática clínica.</p>
         </div>
+
         <div className="faq-list">
           {faqItems.map((item) => (
             <details
