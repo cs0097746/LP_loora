@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - feat/loomie-psychology-lp
+      - feat/loomie-psychology-lp-v2
   pull_request:
 
 jobs:
