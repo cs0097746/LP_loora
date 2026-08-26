@@ -12,18 +12,18 @@ export function Header() {
         </a>
 
         <nav className="header-nav" aria-label="Navegação principal">
-          <a href="#recursos">Recursos</a>
+          <a href="#produto">Produto</a>
           <a href="#como-funciona">Como funciona</a>
-          <a href="#seguranca">Segurança</a>
+          <a href="#responsabilidade">Responsabilidade</a>
           <a href="#faq">FAQ</a>
         </nav>
 
         <div className="header-actions">
           <TrackedLink className="text-link header-login" href={siteConfig.crmUrl} eventName="crm_login_click">
-            Entrar
+            Entrar no CRM
           </TrackedLink>
           <TrackedLink className="button button-small" href="#demo" eventName="cta_click_header">
-            Ver a Loomie funcionando
+            Ver uma demonstração
           </TrackedLink>
         </div>
       </div>
