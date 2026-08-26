@@ -13,8 +13,8 @@ describe('landing page V2', () => {
     ).toBeInTheDocument();
 
     expect(
-      screen.getByRole('img', { name: /kanban do loomie/i }),
-    ).toBeInTheDocument();
+      screen.getAllByRole('img', { name: /kanban do loomie/i }).length,
+    ).toBeGreaterThanOrEqual(2);
 
     expect(
       screen.getByRole('heading', {
