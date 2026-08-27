@@ -32,7 +32,6 @@ function readWebpDimensions(buffer: Buffer) {
   }
 
   if (chunk === 'VP8L') {
-    const b0 = buffer[21];
     const b1 = buffer[22];
     const b2 = buffer[23];
     const b3 = buffer[24];
