@@ -6,6 +6,7 @@ on:
       - feat/loomie-psychology-lp
       - feat/loomie-psychology-lp-v2
       - feat/loomie-psychology-lp-v3
+      - feat/loomie-psychology-lp-v4
   pull_request:
 
 jobs:
@@ -68,6 +69,7 @@ jobs:
           path: |
             test-results/landing-desktop.png
             test-results/landing-mobile.png
+            test-results/v4-*.png
 
       - name: Verification gate
         if: always()
