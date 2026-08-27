@@ -17,8 +17,8 @@ export function KanbanShowcase() {
               <img
                 data-testid="v4-kanban-main"
                 src="/product-v4/kanban-left.webp"
-                width="2048"
-                height="1407"
+                width="1800"
+                height="1120"
                 alt="Kanban demonstrativo do Loomie com contatos fictícios em diferentes etapas administrativas"
               />
               <div className="v4-kanban__spot v4-kanban__spot--new" aria-hidden="true"><b>Novo contato</b><small>entrada organizada</small></div>
