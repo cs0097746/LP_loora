@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import HomePage from '@/app/page';
 
 describe('landing page V3', () => {
-  it('leads with real product proof and the operational proposition', () => {
+  it('leads with real product proof and an editorial operational story', () => {
     render(<HomePage />);
 
     expect(
@@ -15,6 +15,9 @@ describe('landing page V3', () => {
     expect(screen.getByTestId('hero-crm-image')).toHaveAttribute('src', '/product/loomie-kanban.webp');
     expect(screen.getAllByText(/demonstração visual/i).length).toBeGreaterThanOrEqual(1);
     expect(screen.getByText(/leora organizando/i)).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'WhatsApp organizado.' })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: /o operacional não precisa esperar você terminar a sessão/i })).toBeInTheDocument();
+    expect(screen.getAllByText(/14:32/).length).toBeGreaterThanOrEqual(1);
 
     expect(
       screen.getByRole('heading', {
@@ -24,12 +27,6 @@ describe('landing page V3', () => {
 
     expect(
       screen.getByRole('heading', { name: /a leora cuida do repetitivo/i }),
-    ).toBeInTheDocument();
-
-    expect(
-      screen.getByRole('heading', {
-        name: /veja o que está acontecendo sem reconstruir sua rotina de cabeça/i,
-      }),
     ).toBeInTheDocument();
   });
 
