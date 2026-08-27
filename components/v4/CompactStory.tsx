@@ -75,7 +75,7 @@ export function CompactStory() {
 
           <div className="v4-story__sticky" aria-label="Interface demonstrativa acompanhando a jornada administrativa">
             <div className="v4-product-window v4-story__window" data-active-step={active}>
-              <div className="v4-product-window__bar" aria-hidden="true"><span /><span /><span /><small>{beats[active].time} · ambiente demo</small></div>
+              <div className="v4-product-window__bar" aria-hidden="true"><span /><span /><span /><small>jornada administrativa · ambiente demo</small></div>
               <div className="v4-product-window__viewport">
                 <img
                   src={beats[active].src}
