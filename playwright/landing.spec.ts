@@ -26,7 +26,7 @@ test('desktop renders the complete V3 product story and real Loomie media', asyn
   await expect(page.getByRole('heading', { name: /O repetitivo acontece sem disputar sua atenção/i })).toBeVisible();
   await expect(page.getByRole('heading', { name: /Contexto que continua existindo quando você fecha o WhatsApp/i })).toBeVisible();
   await expect(page.getByRole('heading', { name: /Veja o que está acontecendo sem reconstruir sua rotina de cabeça/i })).toBeVisible();
-  await expect(page.getByRole('heading', { name: /Conectamos sua rotina/i })).toBeVisible();
+  await expect(page.getByRole('heading', { level: 2, name: 'Conectamos sua rotina. Não pedimos que você vire operador de software.' })).toBeVisible();
   await expect(page.getByRole('heading', { name: /Quanto da sua semana ainda está preso/i })).toBeVisible();
 
   expect(productFailures).toEqual([]);
@@ -98,4 +98,5 @@ test('lead form explains missing fields instead of silently failing', async ({ p
   await expect(page.getByText('Informe seu nome.')).toBeVisible();
   await expect(page.getByText('Informe um WhatsApp com DDD.')).toBeVisible();
   await expect(page.getByText('Selecione uma faixa de atendimentos.')).toBeVisible();
+  await expect(page.getByText(/Não envie informações clínicas de pacientes/i)).toBeVisible();
 });
