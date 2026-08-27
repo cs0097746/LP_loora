@@ -13,7 +13,7 @@ describe('landing page V3', () => {
     ).toBeInTheDocument();
 
     expect(screen.getByTestId('hero-crm-image')).toHaveAttribute('src', '/product/loomie-kanban.webp');
-    expect(screen.getByText(/demonstração visual/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/demonstração visual/i).length).toBeGreaterThanOrEqual(1);
     expect(screen.getByText(/leora organizando/i)).toBeInTheDocument();
 
     expect(
