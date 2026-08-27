@@ -96,7 +96,7 @@ test('reduced motion exposes V4 final states and keyboard focus remains visible'
   await expect(page.locator('.v4-wa-card')).toHaveCSS('opacity', '1');
   await expect(page.locator('.v4-hero__focus')).toHaveCSS('animation-name', 'none');
   await expect(page.locator('.v4-leora__node').first()).toHaveCSS('animation-name', 'none');
-  await expect(page.getByText(/Avaliação, decisão e conduta clínica continuam com você/i)).toBeVisible();
+  await expect(page.locator('.v4-leora__boundary strong')).toHaveText('Avaliação, decisão e conduta clínica continuam com você.');
 
   await page.keyboard.press('Tab');
   const focused = page.locator(':focus');
