@@ -16,8 +16,8 @@ export function HistoryProof() {
               <img
                 data-testid="v4-history-image"
                 src="/product-v4/contact-history.webp"
-                width="2048"
-                height="1407"
+                width="1800"
+                height="1120"
                 alt="Tela real do ambiente demonstrativo do Loomie mostrando histórico administrativo de um contato fictício"
               />
             </div>
