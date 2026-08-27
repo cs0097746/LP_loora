@@ -7,7 +7,7 @@ describe('LeadForm', () => {
     const user = userEvent.setup();
     render(<LeadForm />);
 
-    await user.click(screen.getByRole('button', { name: /quero ver na minha rotina/i }));
+    await user.click(screen.getByRole('button', { name: /quero ver a loomie na minha rotina/i }));
 
     expect(screen.getByText('Informe seu nome.')).toBeInTheDocument();
     expect(screen.getByText('Informe um WhatsApp com DDD.')).toBeInTheDocument();
@@ -19,7 +19,7 @@ describe('LeadForm', () => {
     window.dataLayer = [];
     render(<LeadForm />);
 
-    await user.click(screen.getByRole('button', { name: /quero ver na minha rotina/i }));
+    await user.click(screen.getByRole('button', { name: /quero ver a loomie na minha rotina/i }));
 
     expect(window.dataLayer).toContainEqual({ event: 'cta_click_closing' });
   });
