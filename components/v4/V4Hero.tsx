@@ -31,8 +31,8 @@ export function V4Hero() {
               <img
                 data-testid="v4-hero-product"
                 src="/product-v4/kanban-left.webp"
-                width="2048"
-                height="1407"
+                width="1800"
+                height="1120"
                 alt="Kanban real do ambiente demonstrativo do Loomie com contatos fictícios organizados por etapa administrativa"
               />
               <div className="v4-hero__focus" aria-hidden="true"><span>Novo contato</span></div>
