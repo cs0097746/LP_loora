@@ -5,6 +5,7 @@ on:
     branches:
       - feat/loomie-psychology-lp
       - feat/loomie-psychology-lp-v2
+      - feat/loomie-psychology-lp-v3
   pull_request:
 
 jobs:
@@ -56,6 +57,7 @@ jobs:
             lint.log
             build.log
             e2e.log
+            package-lock.json
 
       - name: Upload visual QA
         if: always()

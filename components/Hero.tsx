@@ -29,6 +29,7 @@ export function Hero() {
         <div className="hero-product" aria-describedby="hero-demo-note">
           <div className="product-frame hero-product-frame">
             <Image
+              data-testid="hero-crm-image"
               className="product-image"
               src="/product/loomie-kanban.webp"
               alt="Kanban do Loomie organizando a jornada administrativa de contatos em um consultório demo"

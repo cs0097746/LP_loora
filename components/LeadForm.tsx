@@ -92,7 +92,7 @@ export function LeadForm() {
         disabled={status === 'sending'}
         onClick={() => track('cta_click_closing', readPersistedUtm())}
       >
-        {status === 'sending' ? 'Enviando…' : 'Quero ver na minha rotina'}
+        {status === 'sending' ? 'Enviando…' : 'Quero ver a Loomie na minha rotina'}
         <span aria-hidden="true">↗</span>
       </button>
       <p className="form-privacy">Não envie informações clínicas de pacientes neste formulário.</p>
