@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element -- V4 deliberately serves audited static high-resolution rasters without the Next image optimizer. */
 import { TrackedLink } from '@/components/TrackedLink';
 
 export function V4Hero() {
@@ -12,7 +13,7 @@ export function V4Hero() {
             A Loomie organiza novos contatos, confirmações, agenda e follow-ups enquanto você cuida de quem está na sua frente.
           </p>
           <div className="v4-hero__actions">
-            <TrackedLink className="button button-large" href="#demo" event="cta_hero_click">
+            <TrackedLink className="button button-large" href="#demo" eventName="cta_hero_click">
               Ver como funciona na minha clínica <span aria-hidden="true">↗</span>
             </TrackedLink>
             <a className="v4-text-link" href="https://crm.loomiecrm.com/">Acessar o CRM <span aria-hidden="true">→</span></a>
