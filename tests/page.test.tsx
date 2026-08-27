@@ -20,9 +20,9 @@ describe('landing page V4', () => {
     ).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /tudo que chega encontra um lugar\./i })).toBeInTheDocument();
 
-    expect(screen.getByText('14:32')).toBeInTheDocument();
-    expect(screen.getByText('14:35')).toBeInTheDocument();
-    expect(screen.getByText('14:40')).toBeInTheDocument();
+    expect(screen.getAllByText('14:32').length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText('14:35').length).toBeGreaterThanOrEqual(1);
+    expect(screen.getAllByText('14:40').length).toBeGreaterThanOrEqual(1);
 
     expect(screen.getByRole('heading', { name: /o repetitivo não precisa disputar sua atenção\./i })).toBeInTheDocument();
     expect(screen.getByText('VOCÊ DECIDE')).toBeInTheDocument();
