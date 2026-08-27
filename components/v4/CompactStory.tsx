@@ -66,7 +66,7 @@ export function CompactStory() {
                 <h3>{beat.title}</h3>
                 <p>{beat.body}</p>
                 <div className="v4-story__mobile-media">
-                  <img src={beat.src} width="2048" height="1407" alt={`Interface demonstrativa do Loomie no momento ${beat.time}`} />
+                  <img src={beat.src} width="1800" height="1120" alt={`Interface demonstrativa do Loomie no momento ${beat.time}`} />
                   <span>{beat.label}</span>
                 </div>
               </article>
@@ -79,8 +79,8 @@ export function CompactStory() {
               <div className="v4-product-window__viewport">
                 <img
                   src={beats[active].src}
-                  width="2048"
-                  height="1407"
+                  width="1800"
+                  height="1120"
                   alt="Kanban real do ambiente demonstrativo do Loomie"
                 />
                 <div className={`v4-story__focus v4-story__focus--${active}`} aria-hidden="true">
