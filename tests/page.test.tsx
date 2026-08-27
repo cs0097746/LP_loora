@@ -13,7 +13,11 @@ describe('landing page V4', () => {
     ).toBeInTheDocument();
 
     expect(screen.getByTestId('v4-hero-product')).toHaveAttribute('src', '/product-v4/kanban-left.webp');
-    expect(screen.getByText(/o problema não é falta de organização\. é que sua atenção já tem dono\./i)).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', {
+        name: /o problema não é falta de organização\. é que sua atenção já tem dono\./i,
+      }),
+    ).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /tudo que chega encontra um lugar\./i })).toBeInTheDocument();
 
     expect(screen.getByText('14:32')).toBeInTheDocument();
