@@ -18,7 +18,7 @@ describe('landing page V3', () => {
     expect(screen.getByRole('heading', { name: /o repetitivo acontece sem disputar sua atenção/i })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /contexto que continua existindo quando você fecha o whatsapp/i })).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /veja o que está acontecendo sem reconstruir sua rotina de cabeça/i })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: /conectamos sua rotina/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2, name: 'Conectamos sua rotina. Não pedimos que você vire operador de software.' })).toBeInTheDocument();
     expect(screen.getByText(/automação para o administrativo/i)).toBeInTheDocument();
     expect(screen.getByRole('heading', { name: /quanto da sua semana ainda está preso/i })).toBeInTheDocument();
   });
