@@ -1,5 +1,6 @@
 'use client';
 
+import type { CSSProperties } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { track } from '@/lib/analytics';
 
@@ -63,7 +64,7 @@ export function LeoraFlow() {
           {nodes.map((node, index) => (
             <li
               className={`v3-leora-node v3-leora-node--${node.tone}`}
-              style={{ '--v3-node-index': index } as React.CSSProperties}
+              style={{ '--v3-node-index': index } as CSSProperties}
               key={node.label}
             >
               <span className="v3-leora-node__number">0{index + 1}</span>
