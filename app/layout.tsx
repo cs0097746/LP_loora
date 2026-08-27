@@ -7,6 +7,7 @@ import './globals.css';
 import './mobile-overrides.css';
 import './v3.css';
 import './v3-story.css';
+import './v3-proof.css';
 
 const display = Bricolage_Grotesque({ subsets: ['latin'], variable: '--font-display', display: 'swap' });
 const body = Source_Sans_3({ subsets: ['latin'], variable: '--font-body', display: 'swap' });
