@@ -1,15 +1,15 @@
-import { ClosingCTA } from '@/components/ClosingCTA';
-import { FAQ } from '@/components/FAQ';
 import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
-import { HowItWorks } from '@/components/HowItWorks';
-import { Security } from '@/components/Security';
 import { CinematicHero } from '@/components/v3/CinematicHero';
 import { DashboardProof } from '@/components/v3/DashboardProof';
+import { FinalConversion } from '@/components/v3/FinalConversion';
+import { HowItFits } from '@/components/v3/HowItFits';
 import { LeoraFlow } from '@/components/v3/LeoraFlow';
 import { Manifesto } from '@/components/v3/Manifesto';
 import { ProductProof } from '@/components/v3/ProductProof';
+import { Responsibility } from '@/components/v3/Responsibility';
 import { ScrollStory } from '@/components/v3/ScrollStory';
+import { V3FAQ } from '@/components/v3/V3FAQ';
 
 export default function HomePage() {
   return (
@@ -22,10 +22,10 @@ export default function HomePage() {
         <LeoraFlow />
         <ProductProof />
         <DashboardProof />
-        <HowItWorks />
-        <Security />
-        <FAQ />
-        <ClosingCTA />
+        <HowItFits />
+        <Responsibility />
+        <V3FAQ />
+        <FinalConversion />
       </main>
       <Footer />
     </>
