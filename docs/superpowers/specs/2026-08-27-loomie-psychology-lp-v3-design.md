@@ -64,6 +64,8 @@ CRM screenshots remain authentic, but may be cropped, layered, masked, scaled an
 
 Do not alter underlying CRM values to fabricate outcomes.
 
+Any animated state placed on top of a real screenshot must be presented as a **demonstrative visual layer**, not as a claim that the screenshot itself is a live recording. The landing page may illustrate a supported workflow, but it must not fabricate an actual customer interaction or imply that a scripted visual is real-time evidence.
+
 ### 3.5 No unsupported proof
 
 Do not add absolute claims such as:
@@ -162,10 +164,12 @@ On first load:
 
 1. WhatsApp message appears.
 2. A discreet state appears: `Leora organizando`.
-3. A corresponding contact/card in the Loomie Kanban receives visual emphasis.
-4. The card transitions into the appropriate administrative stage.
+3. A corresponding demonstrative contact/card overlay receives visual emphasis over the real Kanban composition.
+4. The demonstrative card transitions into the appropriate administrative stage.
 5. A small completion state may appear using the Loomie green.
 6. Animation settles into a static state.
+
+The real CRM screenshot remains unmodified as the factual product surface. Motion that illustrates the workflow is implemented separately and should be visually identifiable as a demonstration rather than disguised as a live recording.
 
 The interaction should run once by default, not loop aggressively.
 
@@ -209,19 +213,19 @@ Visual: simulated administrative WhatsApp message + contact cue.
 
 `14:33 — o contexto entrou no Loomie`
 
-Visual: Kanban crop, new card highlighted in `Novo contato`.
+Visual: Kanban crop, demonstrative new-card layer highlighted over `Novo contato`.
 
 ### State 3
 
 `14:35 — o próximo passo ficou claro`
 
-Visual: transition/highlight toward `Aguardando horário` or `Agendado`.
+Visual: demonstrative transition/highlight toward `Aguardando horário` or `Agendado`.
 
 ### State 4
 
 `14:40 — o follow-up já está organizado`
 
-Visual: task/gatilho/history surfaces become active.
+Visual: real task/gatilho/history surfaces become active in the composition.
 
 Transitions should use controlled fades, crop shifts and small translations instead of hard image swaps.
 
@@ -511,7 +515,7 @@ Requirements:
 
 The V3 is ready for PR only when:
 
-1. Hero visibly renders the real CRM product and signature sequence.
+1. Hero visibly renders the real CRM product and signature demonstrative sequence.
 2. Critical screenshots decode and are visibly present in QA artifacts.
 3. Page no longer follows a repeated generic `feature card` visual pattern.
 4. Desktop storytelling has a clear progressive product narrative.
@@ -524,6 +528,7 @@ The V3 is ready for PR only when:
 11. Production build passes.
 12. Playwright desktop/mobile/reduced-motion/form flows pass.
 13. Final desktop and mobile screenshots are manually inspected before the PR is called ready.
+14. Demonstrative motion is not presented as live customer evidence or an actual WhatsApp/CRM recording.
 
 ## 14. Implementation Direction
 
