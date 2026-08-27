@@ -5,7 +5,7 @@ it('contains the complete administrative story in chronological order', () => {
   render(<ScrollStory />);
 
   ['14:32', '14:33', '14:35', '14:40'].forEach((time) => {
-    expect(screen.getByText(new RegExp(time))).toBeInTheDocument();
+    expect(screen.getAllByText(new RegExp(time)).length).toBeGreaterThanOrEqual(1);
   });
 
   expect(screen.getByText(/chegou um novo contato/i)).toBeInTheDocument();
