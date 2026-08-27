@@ -46,18 +46,27 @@ For every final QA viewport, the page must be reviewed section by section at nor
 
 The current tiny WebP exports are not acceptable as primary V4 proof assets. Existing repository files are roughly 6–10 KB and cannot support large presentation without visible degradation.
 
-V4 will use the original higher-resolution demo CRM captures as source material. New web assets will be generated from those sources with enough intrinsic resolution for Retina/high-DPI presentation.
+V4 will use the original higher-resolution demo CRM captures as source material. Known source captures available for the redesign include approximately:
 
-Rules:
+- Kanban: 1600 × 702
+- Contact/history: 1190 × 910
+- Dashboard: 1500 × 1085
+- Automations: 1340 × 495
+- Tasks: 1340 × 495
 
-- Do not upscale a low-resolution screenshot to create a detail crop.
+New web assets will be generated from those sources with enough intrinsic resolution for the intended rendered size. If a V4 composition needs more resolution than those sources can support, the composition must be reduced/cropped differently or a fresh high-resolution demo capture must be produced; low-resolution upscaling is not an acceptable fallback.
+
+Measurable rules:
+
+- Never render a key product raster wider in CSS pixels than its intrinsic pixel width.
+- Target at least ~1.3× intrinsic source width relative to the maximum CSS width of key desktop product scenes when the available source permits it.
+- Detail crops must be generated from the highest-resolution source asset, not from an already-compressed derivative.
 - Do not reuse the same small raster and zoom it to 200%+ for a floating detail.
-- Important desktop product scenes should have source dimensions comfortably above their maximum rendered CSS size.
-- Compression should preserve text edges and interface detail; file size is secondary to credibility.
-- Use WebP/AVIF only when the generated result remains visually sharp.
+- Compression must preserve text edges and interface detail; file size is secondary to credibility.
+- Use WebP/AVIF only when the generated result remains visually sharp at 100% browser zoom.
 - Keep demo names/data fictitious and clearly label demo-only states where needed.
 
-The product-image gate will validate both browser decoding and practical visual usage. A passing `naturalWidth > 0` is necessary but not sufficient.
+The product-image gate will validate browser decoding, intrinsic dimensions, and practical visual usage. A passing `naturalWidth > 0` is necessary but not sufficient.
 
 ## Page architecture
 
@@ -172,7 +181,7 @@ Headline direction:
 
 Use a high-resolution real contact/history interface. The primary screenshot should be large and sharp.
 
-A detail crop may float over the main surface only if it comes from a source with sufficient intrinsic resolution. No enlarged low-resolution duplicate.
+A detail crop may float over the main surface only if it comes from the highest-resolution source and remains within the asset scaling rules above. No enlarged low-resolution duplicate.
 
 The section should communicate administrative continuity, not clinical recordkeeping unless such functionality is independently verified.
 
@@ -329,9 +338,12 @@ Implementation is complete only when all of the following are fresh and green on
 - lead form validation;
 - product asset requests return successfully;
 - key product images decode in browser;
+- key product assets are not rendered wider than their intrinsic raster width;
 - final desktop and mobile visual QA artifacts are generated.
 
 Visual QA must additionally include section-level inspection at normal scale for hero, main Kanban showcase, scroll story, Leora, history, automations/tasks, dashboard, and final conversion.
+
+Each inspected section must have its own screenshot/crop artifact or equivalent viewport capture so defects cannot hide inside a scaled-down full-page screenshot.
 
 A final page screenshot alone is not enough evidence of visual quality.
 
