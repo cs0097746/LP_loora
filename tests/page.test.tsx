@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import HomePage from '@/app/page';
 
-describe('landing page V2', () => {
-  it('leads with real product proof and the new operational proposition', () => {
+describe('landing page V3', () => {
+  it('leads with real product proof and the operational proposition', () => {
     render(<HomePage />);
 
     expect(
@@ -12,9 +12,9 @@ describe('landing page V2', () => {
       }),
     ).toBeInTheDocument();
 
-    expect(
-      screen.getAllByRole('img', { name: /kanban do loomie/i }).length,
-    ).toBeGreaterThanOrEqual(2);
+    expect(screen.getByTestId('hero-crm-image')).toHaveAttribute('src', '/product/loomie-kanban.webp');
+    expect(screen.getByText(/demonstração visual/i)).toBeInTheDocument();
+    expect(screen.getByText(/leora organizando/i)).toBeInTheDocument();
 
     expect(
       screen.getByRole('heading', {
@@ -36,11 +36,7 @@ describe('landing page V2', () => {
   it('keeps conversion paths and avoids unsupported marketing claims', () => {
     render(<HomePage />);
 
-    expect(
-      screen.getAllByRole('link', {
-        name: /ver uma demonstração|ver a loomie na minha rotina/i,
-      }).length,
-    ).toBeGreaterThanOrEqual(2);
+    expect(screen.getByRole('link', { name: /ver a loomie funcionando/i })).toHaveAttribute('href', '#demo');
 
     expect(
       screen.getByRole('link', { name: /quero ver esse fluxo no meu consultório/i }),
