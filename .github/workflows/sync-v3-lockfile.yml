@@ -1,0 +1,34 @@
+name: Sync V3 lockfile
+
+on:
+  push:
+    branches:
+      - feat/loomie-psychology-lp-v3
+
+permissions:
+  contents: write
+
+jobs:
+  sync-lockfile:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/loomie-psychology-lp-v3
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Regenerate package lock
+        run: npm install --package-lock-only --legacy-peer-deps --no-audit --no-fund
+      - name: Commit resolved lockfile
+        run: |
+          if git diff --quiet -- package-lock.json; then
+            echo "package-lock.json already synchronized"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package-lock.json
+          git commit -m "chore: sync lockfile for Next 16.3.3"
+          git push origin HEAD:feat/loomie-psychology-lp-v3
