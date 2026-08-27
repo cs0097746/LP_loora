@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element -- V4 deliberately serves audited static high-resolution rasters without the Next image optimizer. */
 import { TrackedLink } from '@/components/TrackedLink';
 
 export function V4Hero() {
