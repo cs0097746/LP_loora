@@ -1,9 +1,34 @@
+'use client';
+
+import { useEffect, useRef } from 'react';
 import { siteConfig } from '@/lib/config';
+import { track } from '@/lib/analytics';
 import { TrackedLink } from '@/components/TrackedLink';
 import { DemoWhatsApp } from './DemoWhatsApp';
 import { ProductCanvas } from './ProductCanvas';
 
 export function CinematicHero() {
+  const sequenceRef = useRef<HTMLDivElement>(null);
+  const tracked = useRef(false);
+
+  useEffect(() => {
+    const element = sequenceRef.current;
+    if (!element || typeof IntersectionObserver === 'undefined') return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry?.isIntersecting || tracked.current) return;
+        tracked.current = true;
+        track('hero_sequence_view');
+        observer.disconnect();
+      },
+      { threshold: 0.25 },
+    );
+
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section className="v3-hero" id="top" aria-labelledby="v3-hero-title">
       <div className="v3-hero__grid" aria-hidden="true" />
@@ -35,7 +60,7 @@ export function CinematicHero() {
           </div>
         </div>
 
-        <div className="v3-hero__visual v3-hero-sequence" aria-describedby="v3-hero-demo-note">
+        <div ref={sequenceRef} className="v3-hero__visual v3-hero-sequence" aria-describedby="v3-hero-demo-note">
           <div className="v3-product-aura" aria-hidden="true" />
           <ProductCanvas>
             <DemoWhatsApp />
