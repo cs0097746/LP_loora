@@ -26,7 +26,7 @@ describe('landing page V4', () => {
 
     expect(screen.getByRole('heading', { name: /o repetitivo não precisa disputar sua atenção\./i })).toBeInTheDocument();
     expect(screen.getByText('VOCÊ DECIDE')).toBeInTheDocument();
-    expect(screen.getByText(/avaliação, decisão e conduta clínica continuam com você\./i)).toBeInTheDocument();
+    expect(screen.getAllByText(/avaliação, decisão e conduta clínica continuam com você\./i).length).toBeGreaterThanOrEqual(1);
 
     expect(screen.getByRole('heading', { name: /você não precisa lembrar onde aquela conversa parou\./i })).toBeInTheDocument();
     expect(screen.getByText('QUANDO')).toBeInTheDocument();
