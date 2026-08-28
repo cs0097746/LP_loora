@@ -74,10 +74,14 @@ test('desktop renders V4 with sharp real product proof and section-level QA arti
   await expect(page.getByRole('heading', { name: /Você não precisa lembrar onde aquela conversa parou\./i })).toBeVisible();
   await expectSharpImage(page.getByTestId('v4-history-image'));
   await expectSharpImage(page.getByTestId('v4-automation-image'));
-  await expectSharpImage(page.getByTestId('v4-task-image'));
+
+  await expect(page.getByTestId('v4-task-image')).toHaveCount(0);
+  await expect(page.getByTestId('v4-task-example')).toBeVisible();
+  await expect(page.getByText('EXEMPLO ILUSTRATIVO')).toBeVisible();
+  await expect(page.getByText('Confirmar presença')).toBeVisible();
 
   const taskInk = await renderedInkRatio(page, page.locator('.v4-causal__side--then .v4-causal__viewport'));
-  expect(taskInk, `Task proof looks visually empty: ink ratio ${taskInk}`).toBeGreaterThan(0.025);
+  expect(taskInk, `Task example looks visually empty: ink ratio ${taskInk}`).toBeGreaterThan(0.025);
 
   await expect(page.getByRole('heading', { name: /Você olha uma vez e sabe o que está acontecendo\./i })).toBeVisible();
   await expectSharpImage(page.getByTestId('v4-dashboard-image'), 1.25);
