@@ -1,31 +1,35 @@
-import { Footer } from '@/components/Footer';
 import { Header } from '@/components/Header';
-import { CinematicHero } from '@/components/v3/CinematicHero';
-import { DashboardProof } from '@/components/v3/DashboardProof';
-import { FinalConversion } from '@/components/v3/FinalConversion';
-import { HowItFits } from '@/components/v3/HowItFits';
-import { LeoraFlow } from '@/components/v3/LeoraFlow';
-import { Manifesto } from '@/components/v3/Manifesto';
-import { ProductProof } from '@/components/v3/ProductProof';
-import { Responsibility } from '@/components/v3/Responsibility';
-import { ScrollStory } from '@/components/v3/ScrollStory';
-import { V3FAQ } from '@/components/v3/V3FAQ';
+import { Footer } from '@/components/Footer';
+import { V4Hero } from '@/components/v4/V4Hero';
+import { PainThesis } from '@/components/v4/PainThesis';
+import { KanbanShowcase } from '@/components/v4/KanbanShowcase';
+import { CompactStory } from '@/components/v4/CompactStory';
+import { LeoraBoundary } from '@/components/v4/LeoraBoundary';
+import { HistoryProof } from '@/components/v4/HistoryProof';
+import { AutomationProof } from '@/components/v4/AutomationProof';
+import { DashboardProof } from '@/components/v4/DashboardProof';
+import { ClinicFit } from '@/components/v4/ClinicFit';
+import { Responsibility } from '@/components/v4/Responsibility';
+import { V4FAQ } from '@/components/v4/V4FAQ';
+import { V4Conversion } from '@/components/v4/V4Conversion';
 
 export default function HomePage() {
   return (
     <>
       <Header />
       <main>
-        <CinematicHero />
-        <Manifesto />
-        <ScrollStory />
-        <LeoraFlow />
-        <ProductProof />
+        <V4Hero />
+        <PainThesis />
+        <KanbanShowcase />
+        <CompactStory />
+        <LeoraBoundary />
+        <HistoryProof />
+        <AutomationProof />
         <DashboardProof />
-        <HowItFits />
+        <ClinicFit />
         <Responsibility />
-        <V3FAQ />
-        <FinalConversion />
+        <V4FAQ />
+        <V4Conversion />
       </main>
       <Footer />
     </>

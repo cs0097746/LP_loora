@@ -1,46 +1,62 @@
-import type { Metadata } from 'next';
-import { Bricolage_Grotesque, IBM_Plex_Mono, Source_Sans_3 } from 'next/font/google';
-import type { ReactNode } from 'react';
-import { AnalyticsScripts } from '@/components/AnalyticsScripts';
-import { siteConfig } from '@/lib/config';
-import './globals.css';
-import './mobile-overrides.css';
-import './v3.css';
-import './v3-story.css';
-import './v3-proof.css';
-import './v3-conversion.css';
+import type { Metadata } from "next";
+import { Bricolage_Grotesque, IBM_Plex_Mono, Source_Sans_3 } from "next/font/google";
+import "./globals.css";
+import "./v4.css";
+import "./v4-product.css";
+import "./v4-conversion.css";
+import "./v4-polish.css";
+import { AnalyticsScripts } from "@/components/AnalyticsScripts";
 
-const display = Bricolage_Grotesque({ subsets: ['latin'], variable: '--font-display', display: 'swap' });
-const body = Source_Sans_3({ subsets: ['latin'], variable: '--font-body', display: 'swap' });
-const mono = IBM_Plex_Mono({ subsets: ['latin'], weight: ['400', '500', '600'], variable: '--font-mono', display: 'swap' });
+const display = Bricolage_Grotesque({
+  variable: "--font-display",
+  subsets: ["latin"],
+  display: "swap",
+});
 
-const title = 'Loomie para Psicólogos | CRM para o operacional do consultório';
-const description = 'Centralize novos contatos, confirmações, follow-ups e rotinas administrativas em um CRM para psicólogos, com automações configuráveis e controle humano.';
+const body = Source_Sans_3({
+  variable: "--font-body",
+  subsets: ["latin"],
+  display: "swap",
+});
+
+const mono = IBM_Plex_Mono({
+  variable: "--font-mono",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600"],
+});
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://loomiecrm.com";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.siteUrl),
-  title,
-  description,
-  alternates: { canonical: '/' },
+  metadataBase: new URL(siteUrl),
+  title: "CRM para Psicólogos | Loomie",
+  description:
+    "A Loomie organiza contatos e rotinas administrativas do consultório em um CRM com automações configuráveis e assistência operacional da Leora.",
+  alternates: { canonical: "/" },
+  robots: { index: true, follow: true },
   openGraph: {
-    type: 'website',
-    locale: 'pt_BR',
-    title: 'Sua clínica continua andando enquanto você está em sessão.',
-    description,
-    url: '/',
-    siteName: 'Loomie para Psicólogos',
+    title: "CRM para Psicólogos | Loomie",
+    description: "Sua clínica organizada enquanto você cuida de quem está na sua frente.",
+    url: "/",
+    siteName: "Loomie",
+    locale: "pt_BR",
+    type: "website",
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Loomie para Psicólogos',
-    description: 'CRM + automações para organizar o operacional do consultório.',
+    card: "summary_large_image",
+    title: "CRM para Psicólogos | Loomie",
+    description: "Contatos, agenda, confirmações e follow-ups em um fluxo administrativo organizado.",
   },
 };
 
-export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR" className={`${display.variable} ${body.variable} ${mono.variable}`}>
-      <body>{children}<AnalyticsScripts /></body>
+    <html lang="pt-BR">
+      <body className={`${display.variable} ${body.variable} ${mono.variable}`}>
+        {children}
+        <AnalyticsScripts />
+      </body>
     </html>
   );
 }

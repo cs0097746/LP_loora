@@ -1,0 +1,239 @@
+/* V4 release polish: tighter story pacing and hard crop boundaries for mobile product scenes. */
+
+.v4-story {
+  padding-top: clamp(84px, 7vw, 108px);
+  padding-bottom: 64px;
+}
+
+.v4-story .v4-section-head {
+  margin-bottom: 38px;
+}
+
+.v4-story__step {
+  min-height: clamp(320px, 38vh, 390px);
+  padding-block: 28px;
+}
+
+.v4-story__sticky {
+  top: 88px;
+}
+
+/* Preserve the native framing of the real automation capture instead of forcing it
+   into a tall cover crop. The task outcome beside it is intentionally editorial. */
+.v4-causal__viewport {
+  height: auto;
+}
+
+.v4-causal__side--when .v4-causal__viewport {
+  aspect-ratio: 700 / 259;
+}
+
+.v4-causal__side .v4-causal__viewport img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  min-height: 0;
+  object-fit: contain;
+  object-position: left top;
+  transform: none;
+}
+
+.v4-task-example {
+  min-height: 248px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+  padding: clamp(20px, 2.2vw, 30px);
+  border: 1px solid #cad9e9;
+  border-radius: 15px;
+  background: linear-gradient(145deg, #ffffff 0%, #f3f8fd 100%);
+  box-shadow: 0 24px 55px rgba(20, 58, 101, .10);
+}
+
+.v4-task-example__topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.v4-task-example__topline > span {
+  color: var(--blue);
+  font-family: var(--font-mono), monospace;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .12em;
+}
+
+.v4-task-example__topline > small {
+  color: #8797a8;
+  font-size: 10px;
+}
+
+.v4-task-example__card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 16px 17px;
+  border: 1px solid #d8e3ee;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 10px 28px rgba(22, 62, 105, .08);
+}
+
+.v4-task-example__card > div {
+  display: grid;
+  gap: 3px;
+}
+
+.v4-task-example__card small,
+.v4-task-example__meta dt {
+  color: #8b9aaa;
+  font-family: var(--font-mono), monospace;
+  font-size: 8px;
+  letter-spacing: .05em;
+}
+
+.v4-task-example__card strong {
+  color: #173d65;
+  font-size: 15px;
+}
+
+.v4-task-example__card > span {
+  flex: none;
+  padding: 6px 8px;
+  border-radius: 999px;
+  background: #eef5fc;
+  color: #526b85;
+  font-size: 9px;
+  font-weight: 650;
+}
+
+.v4-task-example__meta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
+}
+
+.v4-task-example__meta > div {
+  min-width: 0;
+  padding-top: 10px;
+  border-top: 1px solid #dce6ef;
+}
+
+.v4-task-example__meta dd {
+  margin: 4px 0 0;
+  color: #526980;
+  font-size: 10px;
+  line-height: 1.35;
+}
+
+@media (max-width: 760px) {
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  .site-header {
+    position: relative;
+    top: auto;
+  }
+
+  .v4-hero,
+  .v4-kanban,
+  .v4-story,
+  .v4-leora,
+  .v4-proof,
+  .v4-dashboard,
+  .v4-fit,
+  .v4-responsibility,
+  .v4-faq,
+  .v4-conversion {
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  .v4-product-window,
+  .v4-product-window__viewport,
+  .v4-history__art,
+  .v4-causal,
+  .v4-causal__side,
+  .v4-dashboard__stage {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .v4-story {
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+
+  .v4-story .v4-section-head {
+    margin-bottom: 42px;
+  }
+
+  .v4-story__steps {
+    width: 100%;
+    min-width: 0;
+    gap: 42px;
+  }
+
+  .v4-story__step {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .v4-story__step h3,
+  .v4-story__step p {
+    width: 100%;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .v4-story__step h3 {
+    font-size: clamp(28px, 8vw, 32px);
+    line-height: 1.04;
+    text-wrap: balance;
+  }
+
+  .v4-task-example {
+    min-height: 230px;
+    gap: 15px;
+    padding: 18px;
+  }
+
+  .v4-task-example__topline {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .v4-task-example__card {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .v4-task-example__meta {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+
+  .v4-task-example__meta > div {
+    display: grid;
+    grid-template-columns: 92px 1fr;
+    gap: 8px;
+    align-items: baseline;
+    padding-top: 7px;
+  }
+
+  .v4-task-example__meta dd {
+    margin-top: 0;
+  }
+}
