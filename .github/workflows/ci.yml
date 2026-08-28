@@ -7,6 +7,7 @@ on:
       - feat/loomie-psychology-lp-v2
       - feat/loomie-psychology-lp-v3
       - feat/loomie-psychology-lp-v4
+      - feat/loomie-psychology-lp-v5
   pull_request:
 
 jobs:
@@ -70,6 +71,7 @@ jobs:
             test-results/landing-desktop.png
             test-results/landing-mobile.png
             test-results/v4-*.png
+            test-results/v5-*.png
 
       - name: Verification gate
         if: always()
