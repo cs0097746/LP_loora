@@ -124,11 +124,17 @@
   .flowThread {
     position: absolute;
     top: 34px;
+    right: auto;
     bottom: 28px;
     left: 10.5px;
+    grid-column: auto;
+    grid-row: auto;
     width: 1px;
     height: auto;
     display: block;
+    justify-self: auto;
+    align-self: auto;
+    transform: none;
   }
 
   .flowNode,
