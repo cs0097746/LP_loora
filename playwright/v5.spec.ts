@@ -15,6 +15,12 @@ async function expectMinimumFontSize(locator: Locator, minimum: number) {
   expect(size, `Expected font size >= ${minimum}px, received ${size}px`).toBeGreaterThanOrEqual(minimum);
 }
 
+async function centerX(locator: Locator) {
+  const box = await locator.boundingBox();
+  expect(box).not.toBeNull();
+  return box!.x + box!.width / 2;
+}
+
 async function captureStaticHero(page: Page, width: number, height: number, path: string) {
   await page.setViewportSize({ width, height });
   await page.goto('/v5');
@@ -35,6 +41,21 @@ test('V5 static hero is art-directed across target viewports', async ({ page }) 
   await captureStaticHero(page, 1728, 1100, 'test-results/v5-hero-static-wide.png');
   await captureStaticHero(page, 768, 1024, 'test-results/v5-hero-static-tablet.png');
   await captureStaticHero(page, 390, 844, 'test-results/v5-hero-static-mobile.png');
+});
+
+test('V5 desktop causal objects share one straight visual spine', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto('/v5');
+
+  const stage = page.getByTestId('v5-hero-stage');
+  const spineX = await centerX(stage.locator('svg').first());
+  const nodeIds = ['v5-session', 'v5-message', 'v5-contact', 'v5-next-step', 'v5-slot'];
+
+  for (const id of nodeIds) {
+    const signal = page.getByTestId(id).locator(':scope > span').first();
+    const signalX = await centerX(signal);
+    expect(Math.abs(signalX - spineX), `${id} is ${Math.abs(signalX - spineX)}px away from the spine`).toBeLessThanOrEqual(2);
+  }
 });
 
 test('V5 mobile hero keeps object labels and supporting text legible', async ({ page }) => {
