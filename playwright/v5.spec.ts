@@ -78,6 +78,23 @@ test('V5 mobile timeline uses a hairline rail aligned with its signals', async (
   }
 });
 
+test('V5 hero causal sequence reaches a stable confirmed state', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto('/v5');
+
+  const sequence = page.getByTestId('v5-hero-sequence');
+  await expect(sequence).toHaveAttribute('data-phase', 'session');
+  await expect(sequence).toHaveAttribute('data-phase', 'confirmed', { timeout: 8_500 });
+});
+
+test('V5 hero honors reduced motion by settling immediately', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/v5');
+
+  await expect(page.getByTestId('v5-hero-sequence')).toHaveAttribute('data-phase', 'confirmed', { timeout: 500 });
+});
+
 test('V5 mobile hero keeps object labels and supporting text legible', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/v5');
