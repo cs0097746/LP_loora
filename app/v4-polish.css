@@ -1,0 +1,64 @@
+/* V4 release polish: tighter story pacing and hard crop boundaries for mobile product scenes. */
+
+.v4-story {
+  padding-top: clamp(84px, 7vw, 108px);
+  padding-bottom: 64px;
+}
+
+.v4-story .v4-section-head {
+  margin-bottom: 38px;
+}
+
+.v4-story__step {
+  min-height: clamp(320px, 38vh, 390px);
+  padding-block: 28px;
+}
+
+.v4-story__sticky {
+  top: 88px;
+}
+
+@media (max-width: 760px) {
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  .v4-hero,
+  .v4-kanban,
+  .v4-story,
+  .v4-leora,
+  .v4-proof,
+  .v4-dashboard,
+  .v4-fit,
+  .v4-responsibility,
+  .v4-faq,
+  .v4-conversion {
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  .v4-product-window,
+  .v4-product-window__viewport,
+  .v4-history__art,
+  .v4-causal,
+  .v4-causal__side,
+  .v4-dashboard__stage {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .v4-story {
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+
+  .v4-story .v4-section-head {
+    margin-bottom: 42px;
+  }
+
+  .v4-story__steps {
+    gap: 42px;
+  }
+}
