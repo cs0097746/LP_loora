@@ -1,4 +1,4 @@
-import { expect, type Page, test } from '@playwright/test';
+import { expect, type Locator, type Page, test } from '@playwright/test';
 
 async function expectNoDocumentOverflow(page: Page) {
   const overflow = await page.evaluate(() => ({
@@ -7,6 +7,12 @@ async function expectNoDocumentOverflow(page: Page) {
   }));
 
   expect(overflow.document, `V5 document overflow: ${JSON.stringify(overflow)}`).toBeLessThanOrEqual(overflow.viewport + 1);
+}
+
+async function expectMinimumFontSize(locator: Locator, minimum: number) {
+  await expect(locator).toBeVisible();
+  const size = await locator.evaluate((element) => Number.parseFloat(getComputedStyle(element).fontSize));
+  expect(size, `Expected font size >= ${minimum}px, received ${size}px`).toBeGreaterThanOrEqual(minimum);
 }
 
 async function captureStaticHero(page: Page, width: number, height: number, path: string) {
@@ -29,4 +35,17 @@ test('V5 static hero is art-directed across target viewports', async ({ page }) 
   await captureStaticHero(page, 1728, 1100, 'test-results/v5-hero-static-wide.png');
   await captureStaticHero(page, 768, 1024, 'test-results/v5-hero-static-tablet.png');
   await captureStaticHero(page, 390, 844, 'test-results/v5-hero-static-mobile.png');
+});
+
+test('V5 mobile hero keeps object labels and supporting text legible', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/v5');
+
+  await expectMinimumFontSize(page.getByTestId('v5-session').getByText('você está atendendo'), 11);
+  await expectMinimumFontSize(page.getByTestId('v5-contact').getByText('NOVO CONTATO'), 11);
+  await expectMinimumFontSize(page.getByTestId('v5-contact').getByText('via mensagem'), 14);
+  await expectMinimumFontSize(page.getByTestId('v5-next-step').getByText('PRÓXIMO PASSO'), 11);
+  await expectMinimumFontSize(page.getByTestId('v5-next-step').getByText('rotina administrativa'), 14);
+  await expectMinimumFontSize(page.getByTestId('v5-slot').getByText('HORÁRIO'), 11);
+  await expectMinimumFontSize(page.getByTestId('v5-slot').getByText('agenda'), 14);
 });
