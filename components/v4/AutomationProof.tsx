@@ -14,7 +14,7 @@ export function AutomationProof() {
             <div className="v4-product-window">
               <div className="v4-product-window__bar" aria-hidden="true"><span /><span /><span /><small>Automações · demo</small></div>
               <div className="v4-product-window__viewport v4-causal__viewport">
-                <img data-testid="v4-automation-image" src="/product-v4/automations.webp" width="1800" height="460" alt="Tela real do Loomie com gatilhos administrativos demonstrativos e inativos" />
+                <img data-testid="v4-automation-image" src="/product/loomie-automations.webp" width="700" height="259" alt="Tela real do Loomie com gatilhos administrativos demonstrativos e inativos" />
               </div>
             </div>
           </figure>
@@ -26,7 +26,7 @@ export function AutomationProof() {
             <div className="v4-product-window">
               <div className="v4-product-window__bar" aria-hidden="true"><span /><span /><span /><small>Tarefas · demo</small></div>
               <div className="v4-product-window__viewport v4-causal__viewport">
-                <img data-testid="v4-task-image" src="/product-v4/tasks.webp" width="1800" height="540" alt="Tela real do Loomie com uma tarefa administrativa fictícia no ambiente demonstrativo" />
+                <img data-testid="v4-task-image" src="/product/loomie-tasks.webp" width="700" height="259" alt="Tela real do Loomie com uma tarefa administrativa fictícia no ambiente demonstrativo" />
               </div>
             </div>
           </figure>
