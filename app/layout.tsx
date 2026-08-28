@@ -4,6 +4,7 @@ import "./globals.css";
 import "./v4.css";
 import "./v4-product.css";
 import "./v4-conversion.css";
+import "./v4-polish.css";
 import { AnalyticsScripts } from "@/components/AnalyticsScripts";
 
 const display = Bricolage_Grotesque({
