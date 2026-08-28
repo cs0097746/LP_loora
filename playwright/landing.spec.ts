@@ -133,9 +133,10 @@ test('mobile header leaves the viewport before long-form product storytelling', 
   await page.goto('/');
 
   const header = page.locator('.site-header');
+  const storyHeading = page.locator('.v4-story .v4-section-head');
   await expect(header).toBeVisible();
-  await page.locator('.v4-story').scrollIntoViewIfNeeded();
-  await expect(page.locator('.v4-story .v4-section-head')).toBeInViewport();
+  await storyHeading.scrollIntoViewIfNeeded();
+  await expect(storyHeading).toBeInViewport();
   await expect(header).not.toBeInViewport();
 });
 
