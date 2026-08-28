@@ -17,9 +17,9 @@ export function V5Header() {
           <a className={styles.loginLink} href="https://crm.loomiecrm.com/">
             Entrar no CRM
           </a>
-          <a className={styles.headerCta} href="/#demo">
+          <Link className={styles.headerCta} href="/#demo">
             Conhecer a Loomie
-          </a>
+          </Link>
         </nav>
       </div>
     </header>
