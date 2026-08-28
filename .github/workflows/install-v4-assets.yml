@@ -5,7 +5,7 @@ on:
     branches:
       - feat/loomie-psychology-lp-v4
     paths:
-      - transfer/v4-q30/r17
+      - transfer/v4-assets/chunk.09
 
 permissions:
   contents: write
@@ -21,11 +21,11 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          for i in $(seq -w 0 4); do test -f "transfer/v4-q30/q30.${i}"; done
-          for i in $(seq -w 0 17); do test -f "transfer/v4-q30/r${i}"; done
+          test -f transfer/v4-assets/chunk.first
+          for i in $(seq -w 0 9); do test -f "transfer/v4-assets/chunk.${i}"; done
           {
-            for i in $(seq -w 0 4); do cat "transfer/v4-q30/q30.${i}"; done
-            for i in $(seq -w 0 17); do cat "transfer/v4-q30/r${i}"; done
+            cat transfer/v4-assets/chunk.first
+            for i in $(seq -w 0 9); do cat "transfer/v4-assets/chunk.${i}"; done
           } > /tmp/v4-assets.tar.gz.b64
           base64 -d /tmp/v4-assets.tar.gz.b64 > /tmp/v4-assets.tar.gz
           echo "afe40867456e42b12cbbaa326d5159d1a9b219e1bd3bc23e9a36b8a5d07c1c43  /tmp/v4-assets.tar.gz" | sha256sum -c -
