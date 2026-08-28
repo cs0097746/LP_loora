@@ -5,6 +5,7 @@ import { HeroSequence } from '@/components/v5/HeroSequence';
 it('explains the session-to-confirmation flow without a dashboard screenshot', () => {
   const { container } = render(<V5Hero />);
 
+  expect(screen.getByTestId('v5-hero-sequence')).toHaveAttribute('data-phase', 'session');
   expect(screen.getByTestId('v5-session')).toHaveTextContent('Sessão · 14:00–14:50');
   expect(screen.getByTestId('v5-message')).toHaveTextContent('14:17');
   expect(screen.getByTestId('v5-contact')).toHaveTextContent('Marina');
