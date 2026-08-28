@@ -5,7 +5,7 @@ on:
     branches:
       - feat/loomie-psychology-lp-v4
     paths:
-      - transfer/v4-assets/chunk.09
+      - transfer/v4-assets/trigger
 
 permissions:
   contents: write
