@@ -41,11 +41,11 @@ test('V5 mobile hero keeps object labels and supporting text legible', async ({ 
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/v5');
 
-  await expectMinimumFontSize(page.getByTestId('v5-session').getByText('você está atendendo'), 11);
-  await expectMinimumFontSize(page.getByTestId('v5-contact').getByText('NOVO CONTATO'), 11);
-  await expectMinimumFontSize(page.getByTestId('v5-contact').getByText('via mensagem'), 14);
-  await expectMinimumFontSize(page.getByTestId('v5-next-step').getByText('PRÓXIMO PASSO'), 11);
-  await expectMinimumFontSize(page.getByTestId('v5-next-step').getByText('rotina administrativa'), 14);
-  await expectMinimumFontSize(page.getByTestId('v5-slot').getByText('HORÁRIO'), 11);
-  await expectMinimumFontSize(page.getByTestId('v5-slot').getByText('agenda'), 14);
+  await expectMinimumFontSize(page.getByTestId('v5-session').getByText('você está atendendo', { exact: true }), 11);
+  await expectMinimumFontSize(page.getByTestId('v5-contact').getByText('NOVO CONTATO', { exact: true }), 11);
+  await expectMinimumFontSize(page.getByTestId('v5-contact').getByText('via mensagem', { exact: true }), 14);
+  await expectMinimumFontSize(page.getByTestId('v5-next-step').getByText('PRÓXIMO PASSO', { exact: true }), 11);
+  await expectMinimumFontSize(page.getByTestId('v5-next-step').getByText('rotina administrativa', { exact: true }), 14);
+  await expectMinimumFontSize(page.getByTestId('v5-slot').getByText('HORÁRIO', { exact: true }), 11);
+  await expectMinimumFontSize(page.getByTestId('v5-slot').getByText('agenda', { exact: true }), 14);
 });
