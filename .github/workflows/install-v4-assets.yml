@@ -22,10 +22,10 @@ jobs:
         run: |
           set -euo pipefail
           test -f transfer/v4-assets/chunk.first
-          for i in $(seq -w 0 9); do test -f "transfer/v4-assets/chunk.${i}"; done
+          for i in $(seq -w 00 09); do test -f "transfer/v4-assets/chunk.${i}"; done
           {
             cat transfer/v4-assets/chunk.first
-            for i in $(seq -w 0 9); do cat "transfer/v4-assets/chunk.${i}"; done
+            for i in $(seq -w 00 09); do cat "transfer/v4-assets/chunk.${i}"; done
           } > /tmp/v4-assets.tar.gz.b64
           base64 -d /tmp/v4-assets.tar.gz.b64 > /tmp/v4-assets.tar.gz
           echo "afe40867456e42b12cbbaa326d5159d1a9b219e1bd3bc23e9a36b8a5d07c1c43  /tmp/v4-assets.tar.gz" | sha256sum -c -
