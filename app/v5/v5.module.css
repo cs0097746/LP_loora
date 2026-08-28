@@ -629,12 +629,18 @@
     background: transparent;
   }
 
-  .sessionRail span {
+  .sessionRail span,
+  .sessionRail small,
+  .objectTopline,
+  .statusLabel {
     font-size: 11px;
   }
 
-  .sessionRail small {
-    font-size: 9px;
+  .contactObject small,
+  .appointmentSlot small,
+  .nextStepObject small {
+    font-size: 14px;
+    line-height: 1.4;
   }
 
   .adminMessage,
@@ -652,5 +658,6 @@
   .stageFooter {
     right: 0;
     left: 0;
+    font-size: 10px;
   }
 }
