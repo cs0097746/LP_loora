@@ -7,6 +7,7 @@ import { Signal } from '@/components/v5/visual/Signal';
 import { StatusLabel } from '@/components/v5/visual/StatusLabel';
 import { Thread } from '@/components/v5/visual/Thread';
 import styles from '@/app/v5/v5.module.css';
+import flowStyles from '@/app/v5/v5-flow.module.css';
 
 export function V5Hero() {
   return (
@@ -30,31 +31,31 @@ export function V5Hero() {
           >
             <p className={styles.stageLabel}>EXEMPLO ILUSTRATIVO · UMA ROTINA EM MOVIMENTO</p>
 
-            <div className={styles.heroFlow}>
-              <div className={styles.flowThread} aria-hidden="true">
+            <div className={flowStyles.heroFlow}>
+              <div className={flowStyles.flowThread} aria-hidden="true">
                 <Thread direction="vertical" active />
               </div>
 
-              <div className={`${styles.flowNode} ${styles.flowSession}`} data-testid="v5-session">
-                <span className={styles.nodeSignal} aria-hidden="true"><Signal active /></span>
+              <div className={`${flowStyles.flowNode} ${flowStyles.flowSession}`} data-testid="v5-session">
+                <span className={`${styles.nodeSignal} ${flowStyles.nodeSignal}`} aria-hidden="true"><Signal active /></span>
                 <div className={styles.sessionRail}>
                   <span>{V5_HERO.session}</span>
                   <small>você está atendendo</small>
                 </div>
               </div>
 
-              <div className={`${styles.flowNode} ${styles.flowMessage}`} data-testid="v5-message">
-                <span className={styles.nodeSignal} aria-hidden="true"><Signal /></span>
+              <div className={`${flowStyles.flowNode} ${flowStyles.flowMessage}`} data-testid="v5-message">
+                <span className={`${styles.nodeSignal} ${flowStyles.nodeSignal}`} aria-hidden="true"><Signal /></span>
                 <AdminMessage time={V5_HERO.messageTime}>{V5_HERO.message}</AdminMessage>
               </div>
 
-              <div className={`${styles.flowNode} ${styles.flowContact}`} data-testid="v5-contact">
-                <span className={styles.nodeSignal} aria-hidden="true"><Signal active /></span>
+              <div className={`${flowStyles.flowNode} ${flowStyles.flowContact}`} data-testid="v5-contact">
+                <span className={`${styles.nodeSignal} ${flowStyles.nodeSignal}`} aria-hidden="true"><Signal active /></span>
                 <ContactObject name={V5_HERO.contactName} state="novo" />
               </div>
 
-              <div className={`${styles.flowNode} ${styles.flowNextStep}`} data-testid="v5-next-step">
-                <span className={styles.nodeSignal} aria-hidden="true"><Signal active /></span>
+              <div className={`${flowStyles.flowNode} ${flowStyles.flowNextStep}`} data-testid="v5-next-step">
+                <span className={`${styles.nodeSignal} ${flowStyles.nodeSignal}`} aria-hidden="true"><Signal active /></span>
                 <article className={styles.nextStepObject}>
                   <div className={styles.objectTopline}>
                     <span>PRÓXIMO PASSO</span>
@@ -65,8 +66,8 @@ export function V5Hero() {
                 </article>
               </div>
 
-              <div className={`${styles.flowNode} ${styles.flowSlot}`} data-testid="v5-slot">
-                <span className={styles.nodeSignal} aria-hidden="true"><Signal active /></span>
+              <div className={`${flowStyles.flowNode} ${flowStyles.flowSlot}`} data-testid="v5-slot">
+                <span className={`${styles.nodeSignal} ${flowStyles.nodeSignal}`} aria-hidden="true"><Signal active /></span>
                 <AppointmentSlot time={V5_HERO.slot} state="confirmado" />
               </div>
             </div>
