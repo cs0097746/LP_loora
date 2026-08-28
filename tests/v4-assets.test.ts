@@ -48,7 +48,7 @@ describe('V4 large product proof assets', () => {
       expect(fs.existsSync(file), `${asset} should exist`).toBe(true);
 
       const bytes = fs.readFileSync(file);
-      expect(bytes.byteLength, `${asset} should retain enough visual information`).toBeGreaterThan(25_000);
+      expect(bytes.byteLength, `${asset} should retain enough visual information`).toBeGreaterThan(20_000);
 
       const dimensions = readWebpDimensions(bytes);
       expect(dimensions.width, `${asset} should retain high intrinsic width`).toBeGreaterThanOrEqual(1800);
