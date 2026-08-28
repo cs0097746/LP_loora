@@ -58,6 +58,26 @@ test('V5 desktop causal objects share one straight visual spine', async ({ page 
   }
 });
 
+test('V5 mobile timeline uses a hairline rail aligned with its signals', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/v5');
+
+  const stage = page.getByTestId('v5-hero-stage');
+  const spineSvg = stage.locator('svg').first();
+  const spineContainer = spineSvg.locator('..');
+  const spineBox = await spineContainer.boundingBox();
+  expect(spineBox).not.toBeNull();
+  expect(spineBox!.width, `Mobile spine should be a hairline, received ${spineBox!.width}px`).toBeLessThanOrEqual(2);
+
+  const spineX = await centerX(spineContainer);
+  const nodeIds = ['v5-session', 'v5-message', 'v5-contact', 'v5-next-step', 'v5-slot'];
+  for (const id of nodeIds) {
+    const signal = page.getByTestId(id).locator(':scope > span').first();
+    const signalX = await centerX(signal);
+    expect(Math.abs(signalX - spineX), `${id} mobile signal is ${Math.abs(signalX - spineX)}px away from the rail`).toBeLessThanOrEqual(1.5);
+  }
+});
+
 test('V5 mobile hero keeps object labels and supporting text legible', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/v5');
