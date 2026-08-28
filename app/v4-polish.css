@@ -18,6 +18,24 @@
   top: 88px;
 }
 
+/* The automation/task sources are wide product captures. Preserve their native framing
+   instead of forcing them into a tall cover crop that can hide the actual task UI. */
+.v4-causal__viewport {
+  height: auto;
+  aspect-ratio: 700 / 259;
+}
+
+.v4-causal__side .v4-causal__viewport img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  min-height: 0;
+  object-fit: contain;
+  object-position: left top;
+  transform: none;
+}
+
 @media (max-width: 760px) {
   html,
   body {
