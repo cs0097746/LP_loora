@@ -12,7 +12,7 @@ export function DashboardProof() {
           <div className="v4-product-window">
             <div className="v4-product-window__bar" aria-hidden="true"><span /><span /><span /><small>Dashboard · ambiente demo</small></div>
             <div className="v4-product-window__viewport">
-              <img data-testid="v4-dashboard-image" src="/product-v4/dashboard.webp" width="1800" height="1160" alt="Dashboard real do ambiente demonstrativo do Loomie com dados fictícios da operação" />
+              <img data-testid="v4-dashboard-image" src="/product-v4/dashboard.webp" width="1800" height="820" alt="Dashboard real do ambiente demonstrativo do Loomie com dados fictícios da operação" />
               <div className="v4-dashboard__callout v4-dashboard__callout--contacts" aria-hidden="true"><b>14</b><span>contatos no ambiente demo</span></div>
               <div className="v4-dashboard__callout v4-dashboard__callout--pipeline" aria-hidden="true"><span>pipeline</span><b>visível por etapa</b></div>
               <div className="v4-dashboard__callout v4-dashboard__callout--next" aria-hidden="true"><span>próximos passos</span><b>organizados</b></div>
