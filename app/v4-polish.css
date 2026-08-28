@@ -59,6 +59,27 @@
   }
 
   .v4-story__steps {
+    width: 100%;
+    min-width: 0;
     gap: 42px;
+  }
+
+  .v4-story__step {
+    width: 100%;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .v4-story__step h3,
+  .v4-story__step p {
+    width: 100%;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  .v4-story__step h3 {
+    font-size: clamp(28px, 8vw, 32px);
+    line-height: 1.04;
+    text-wrap: balance;
   }
 }
