@@ -1,4 +1,4 @@
-import { expect, type Locator, test } from '@playwright/test';
+import { expect, type Locator, type Page, test } from '@playwright/test';
 
 async function expectSharpImage(image: Locator, minimumRatio = 1) {
   await expect(image).toBeVisible();
@@ -13,6 +13,42 @@ async function expectSharpImage(image: Locator, minimumRatio = 1) {
     return renderedWidth > 0 ? element.naturalWidth / renderedWidth : 0;
   });
   expect(ratio, `Expected intrinsic/rendered ratio >= ${minimumRatio}, received ${ratio}`).toBeGreaterThanOrEqual(minimumRatio);
+}
+
+async function renderedInkRatio(page: Page, target: Locator) {
+  await expect(target).toBeVisible();
+  const screenshot = await target.screenshot();
+
+  return page.evaluate(async (base64) => {
+    const image = new Image();
+    image.src = `data:image/png;base64,${base64}`;
+    await image.decode();
+
+    const canvas = document.createElement('canvas');
+    canvas.width = image.naturalWidth;
+    canvas.height = image.naturalHeight;
+    const context = canvas.getContext('2d', { willReadFrequently: true });
+    if (!context) return 0;
+
+    context.drawImage(image, 0, 0);
+    const pixels = context.getImageData(0, 0, canvas.width, canvas.height).data;
+    let sampled = 0;
+    let ink = 0;
+
+    for (let y = 0; y < canvas.height; y += 4) {
+      for (let x = 0; x < canvas.width; x += 4) {
+        const index = (y * canvas.width + x) * 4;
+        const red = pixels[index];
+        const green = pixels[index + 1];
+        const blue = pixels[index + 2];
+        const alpha = pixels[index + 3];
+        sampled += 1;
+        if (alpha > 0 && Math.min(red, green, blue) < 220) ink += 1;
+      }
+    }
+
+    return sampled > 0 ? ink / sampled : 0;
+  }, screenshot.toString('base64'));
 }
 
 test('desktop renders V4 with sharp real product proof and section-level QA artifacts', async ({ page }) => {
@@ -39,6 +75,10 @@ test('desktop renders V4 with sharp real product proof and section-level QA arti
   await expectSharpImage(page.getByTestId('v4-history-image'));
   await expectSharpImage(page.getByTestId('v4-automation-image'));
   await expectSharpImage(page.getByTestId('v4-task-image'));
+
+  const taskInk = await renderedInkRatio(page, page.locator('.v4-causal__side--then .v4-causal__viewport'));
+  expect(taskInk, `Task proof looks visually empty: ink ratio ${taskInk}`).toBeGreaterThan(0.025);
+
   await expect(page.getByRole('heading', { name: /Você olha uma vez e sabe o que está acontecendo\./i })).toBeVisible();
   await expectSharpImage(page.getByTestId('v4-dashboard-image'), 1.25);
   await expect(page.getByRole('heading', { name: /Quanto da sua semana ainda está preso no operacional\?/i })).toBeVisible();
@@ -86,6 +126,17 @@ test('mobile uses dedicated V4 product crops without document overflow', async (
   await page.locator('.v4-leora').screenshot({ path: 'test-results/v4-leora-mobile.png' });
   await page.locator('.v4-conversion').screenshot({ path: 'test-results/v4-conversion-mobile.png' });
   await page.screenshot({ path: 'test-results/landing-mobile.png', fullPage: true });
+});
+
+test('mobile header leaves the viewport before long-form product storytelling', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/');
+
+  const header = page.locator('.site-header');
+  await expect(header).toBeVisible();
+  await page.locator('.v4-story').scrollIntoViewIfNeeded();
+  await expect(page.locator('.v4-story .v4-section-head')).toBeInViewport();
+  await expect(header).not.toBeInViewport();
 });
 
 test('reduced motion exposes V4 final states and keyboard focus remains visible', async ({ page }) => {
