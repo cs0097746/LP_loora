@@ -24,7 +24,7 @@ const beats = [
     time: '14:40',
     title: 'O follow-up já tem lugar.',
     body: 'Tarefas e rotinas administrativas deixam de depender da sua memória entre uma sessão e outra.',
-    src: '/product-v4/kanban-right.webp',
+    src: '/product-v4/kanban-left.webp',
     label: 'follow-up organizado',
   },
 ] as const;
@@ -66,7 +66,7 @@ export function CompactStory() {
                 <h3>{beat.title}</h3>
                 <p>{beat.body}</p>
                 <div className="v4-story__mobile-media">
-                  <img src={beat.src} width="1800" height="1120" alt={`Interface demonstrativa do Loomie no momento ${beat.time}`} />
+                  <img src={beat.src} width="1800" height="820" alt={`Interface demonstrativa do Loomie no momento ${beat.time}`} />
                   <span>{beat.label}</span>
                 </div>
               </article>
@@ -80,7 +80,7 @@ export function CompactStory() {
                 <img
                   src={beats[active].src}
                   width="1800"
-                  height="1120"
+                  height="820"
                   alt="Kanban real do ambiente demonstrativo do Loomie"
                 />
                 <div className={`v4-story__focus v4-story__focus--${active}`} aria-hidden="true">
