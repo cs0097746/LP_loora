@@ -1,0 +1,157 @@
+.proof {
+  padding: clamp(116px, 13vw, 188px) 0;
+  border-bottom: 1px solid var(--v5-line);
+  background: var(--v5-surface);
+}
+
+.proofIntro {
+  max-width: 790px;
+  margin-bottom: clamp(64px, 8vw, 108px);
+}
+
+.eyebrow,
+.figureHead span,
+.figureHead small {
+  font-family: var(--font-mono), monospace;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.eyebrow {
+  margin: 0 0 22px;
+  color: var(--v5-blue-deep);
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.proofIntro h2 {
+  margin: 0;
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(42px, 5vw, 72px);
+  font-weight: 610;
+  letter-spacing: -0.05em;
+  line-height: 1;
+}
+
+.proofIntro > p:last-child {
+  max-width: 650px;
+  margin: 26px 0 0;
+  color: var(--v5-muted);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.proofStack {
+  display: grid;
+  gap: clamp(74px, 9vw, 126px);
+}
+
+.proofFigure {
+  margin: 0;
+}
+
+.proofFigure:nth-child(2) {
+  width: min(92%, 1180px);
+  margin-left: auto;
+}
+
+.figureHead {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 30px;
+  padding: 0 0 18px;
+  border-bottom: 1px solid var(--v5-line-strong);
+}
+
+.figureHead > div {
+  display: grid;
+  gap: 8px;
+}
+
+.figureHead span {
+  color: var(--v5-blue-deep);
+  font-size: 10px;
+  font-weight: 650;
+}
+
+.figureHead strong {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(22px, 2.25vw, 32px);
+  font-weight: 560;
+  letter-spacing: -0.03em;
+}
+
+.figureHead small {
+  color: var(--v5-muted);
+  font-size: 9px;
+  white-space: nowrap;
+}
+
+.imageFrame {
+  overflow: hidden;
+  margin-top: 26px;
+  border: 1px solid var(--v5-line-strong);
+  background: #fff;
+}
+
+.imageFrame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.proofFigure > p {
+  max-width: 780px;
+  margin: 18px 0 0;
+  color: var(--v5-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+@media (max-width: 760px) {
+  .proof {
+    padding: 92px 0;
+  }
+
+  .proofIntro {
+    margin-bottom: 52px;
+  }
+
+  .proofIntro h2 {
+    font-size: clamp(38px, 11.5vw, 52px);
+  }
+
+  .proofIntro > p:last-child {
+    font-size: 16px;
+  }
+
+  .proofStack {
+    gap: 68px;
+  }
+
+  .proofFigure:nth-child(2) {
+    width: 100%;
+  }
+
+  .figureHead {
+    align-items: start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .figureHead small {
+    white-space: normal;
+  }
+
+  .imageFrame {
+    margin-top: 20px;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+  }
+
+  .imageFrame img {
+    width: 760px;
+    max-width: none;
+  }
+}
