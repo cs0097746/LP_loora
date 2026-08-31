@@ -1,0 +1,257 @@
+.pressure,
+.inbound {
+  border-bottom: 1px solid var(--v5-line);
+}
+
+.pressure {
+  padding: clamp(108px, 12vw, 168px) 0;
+}
+
+.pressureGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(440px, 1.1fr);
+  gap: clamp(72px, 9vw, 150px);
+  align-items: start;
+}
+
+.sectionCopy {
+  max-width: 620px;
+}
+
+.sectionEyebrow,
+.inboundLabel,
+.inboundStep {
+  font-family: var(--font-mono), monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sectionEyebrow {
+  margin: 0 0 22px;
+  color: var(--v5-blue-deep);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.sectionCopy h2 {
+  margin: 0;
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(42px, 4.4vw, 66px);
+  font-weight: 610;
+  letter-spacing: -0.045em;
+  line-height: 1.02;
+}
+
+.sectionCopy > p:last-child {
+  max-width: 580px;
+  margin: 26px 0 0;
+  color: var(--v5-muted);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.pressureFragments {
+  margin: 8px 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--v5-line-strong);
+}
+
+.pressureItem {
+  min-height: 76px;
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: center;
+  border-bottom: 1px solid var(--v5-line);
+}
+
+.pressureItem > span,
+.pressureItem time {
+  color: var(--v5-muted);
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+}
+
+.pressureItem strong {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(20px, 1.75vw, 25px);
+  font-weight: 540;
+  letter-spacing: -0.025em;
+}
+
+.inbound {
+  padding: clamp(116px, 13vw, 188px) 0;
+  background: var(--v5-surface);
+}
+
+.inboundGrid {
+  display: grid;
+  gap: clamp(62px, 8vw, 112px);
+}
+
+.inboundGrid .sectionCopy {
+  max-width: 850px;
+}
+
+.inboundFlow {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
+  padding: 72px 0 28px;
+}
+
+.inboundLabel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 0;
+  color: var(--v5-muted);
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.inboundRail {
+  position: absolute;
+  top: 102px;
+  right: 5%;
+  left: 5%;
+  height: 1px;
+  background: var(--v5-blue);
+  opacity: 0.5;
+}
+
+.inboundNode {
+  position: relative;
+  min-width: 0;
+  padding-top: 48px;
+}
+
+.inboundSignal {
+  position: absolute;
+  top: 25px;
+  left: 18px;
+  width: 12px;
+  height: 12px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--v5-surface);
+  z-index: 2;
+}
+
+.inboundStep {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: var(--v5-muted);
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.inboundNode > article {
+  width: 100%;
+  height: 100%;
+  min-height: 132px;
+}
+
+@media (max-width: 980px) {
+  .pressureGrid {
+    grid-template-columns: 1fr;
+    gap: 62px;
+  }
+
+  .pressureFragments {
+    margin-top: 0;
+  }
+
+  .inboundFlow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 42px;
+  }
+
+  .inboundRail {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .pressure,
+  .inbound {
+    padding: 92px 0;
+  }
+
+  .sectionCopy h2 {
+    font-size: clamp(38px, 11.5vw, 52px);
+    line-height: 1.02;
+  }
+
+  .sectionCopy > p:last-child {
+    margin-top: 22px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .pressureGrid {
+    gap: 48px;
+  }
+
+  .pressureItem {
+    min-height: 68px;
+    grid-template-columns: 30px minmax(0, 1fr) auto;
+    gap: 10px;
+  }
+
+  .pressureItem strong {
+    font-size: 19px;
+  }
+
+  .pressureItem time {
+    font-size: 9px;
+  }
+
+  .inboundGrid {
+    gap: 54px;
+  }
+
+  .inboundFlow {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 58px 0 0 34px;
+  }
+
+  .inboundFlow::before {
+    content: '';
+    position: absolute;
+    top: 78px;
+    bottom: 26px;
+    left: 6px;
+    width: 1px;
+    background: var(--v5-blue);
+    opacity: 0.5;
+  }
+
+  .inboundLabel {
+    max-width: 260px;
+    line-height: 1.4;
+  }
+
+  .inboundNode {
+    padding-top: 30px;
+  }
+
+  .inboundSignal {
+    top: 46px;
+    left: -34px;
+  }
+
+  .inboundStep {
+    top: 0;
+  }
+
+  .inboundNode > article {
+    min-height: 0;
+  }
+}
