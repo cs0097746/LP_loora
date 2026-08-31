@@ -5,7 +5,7 @@ export function V5Header() {
   return (
     <header className={styles.header}>
       <div className={`${styles.shell} ${styles.headerInner}`}>
-        <Link className={styles.brand} href="/v5" aria-label="Loomie para psicólogos">
+        <Link className={styles.brand} href="/" aria-label="Loomie para psicólogos">
           <span className={styles.brandMark} aria-hidden="true">
             <i />
             <i />
