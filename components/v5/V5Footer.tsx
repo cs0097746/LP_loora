@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import baseStyles from '@/app/v5/v5.module.css';
 import styles from '@/app/v5/v5-conversion.module.css';
 
@@ -6,7 +7,7 @@ export function V5Footer() {
     <footer className={styles.footer}>
       <div className={`${baseStyles.shell} ${styles.footerInner}`}>
         <div>
-          <a className={styles.footerBrand} href="/" aria-label="Loomie para psicólogos">Loomie</a>
+          <Link className={styles.footerBrand} href="/" aria-label="Loomie para psicólogos">Loomie</Link>
           <p className={styles.footerMeta}>CRM PARA ORGANIZAR RELAÇÕES E ROTINAS · PSICOLOGIA</p>
         </div>
         <nav className={styles.footerLinks} aria-label="Links do rodapé">
