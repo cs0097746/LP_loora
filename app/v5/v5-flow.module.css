@@ -24,6 +24,18 @@
   position: relative;
   z-index: 2;
   align-self: center;
+  transition: opacity 420ms ease, transform 420ms ease;
+  will-change: opacity, transform;
+}
+
+.flowNode[data-active='false'] {
+  opacity: 0.28;
+  transform: translateY(12px);
+}
+
+.flowNode[data-active='true'] {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .nodeSignal {
@@ -86,6 +98,7 @@
   top: 50%;
   width: 24px;
   border-top: 1px solid var(--v5-line-strong);
+  transition: border-color 320ms ease;
 }
 
 .flowMessage::after,
@@ -108,6 +121,33 @@
 .flowSlot .nodeSignal {
   top: calc(50% - 6px);
   left: -30px;
+}
+
+.flowNode[data-active='true']::before,
+.flowNode[data-active='true']::after {
+  border-color: var(--v5-blue);
+}
+
+.flowSlot[data-confirmed='true'] {
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flowNode,
+  .flowNode[data-active='false'],
+  .flowNode[data-active='true'] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+
+  .flowMessage::after,
+  .flowNextStep::after,
+  .flowContact::before,
+  .flowSlot::before {
+    transition: none;
+  }
 }
 
 @media (max-width: 760px) {
@@ -151,7 +191,14 @@
     margin: 0;
     justify-self: stretch;
     align-self: stretch;
-    transform: none;
+  }
+
+  .flowNode[data-active='false'] {
+    transform: translateY(8px);
+  }
+
+  .flowNode[data-active='true'] {
+    transform: translateY(0);
   }
 
   .nodeSignal,
@@ -172,5 +219,13 @@
   .flowContact::before,
   .flowSlot::before {
     display: none;
+  }
+}
+
+@media (max-width: 760px) and (prefers-reduced-motion: reduce) {
+  .flowNode,
+  .flowNode[data-active='false'],
+  .flowNode[data-active='true'] {
+    transform: none;
   }
 }
