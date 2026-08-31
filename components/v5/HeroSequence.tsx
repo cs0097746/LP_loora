@@ -19,7 +19,8 @@ type HeroPhase = (typeof PHASES)[number];
 export function HeroSequence() {
   const [phaseIndex, setPhaseIndex] = useState(0);
   const [reduceMotion, setReduceMotion] = useState(false);
-  const phase: HeroPhase = PHASES[phaseIndex];
+  const effectiveIndex = reduceMotion ? PHASES.length - 1 : phaseIndex;
+  const phase: HeroPhase = PHASES[effectiveIndex];
 
   useEffect(() => {
     if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') return;
@@ -33,12 +34,7 @@ export function HeroSequence() {
   }, []);
 
   useEffect(() => {
-    if (reduceMotion) {
-      setPhaseIndex(PHASES.length - 1);
-      return;
-    }
-
-    if (phaseIndex >= PHASES.length - 1) return;
+    if (reduceMotion || phaseIndex >= PHASES.length - 1) return;
 
     const timer = window.setTimeout(() => {
       setPhaseIndex((current) => Math.min(current + 1, PHASES.length - 1));
@@ -47,11 +43,11 @@ export function HeroSequence() {
     return () => window.clearTimeout(timer);
   }, [phaseIndex, reduceMotion]);
 
-  const messageActive = phaseIndex >= 1;
-  const contactActive = phaseIndex >= 2;
-  const nextStepActive = phaseIndex >= 3;
-  const slotActive = phaseIndex >= 4;
-  const confirmed = phaseIndex >= 5;
+  const messageActive = effectiveIndex >= 1;
+  const contactActive = effectiveIndex >= 2;
+  const nextStepActive = effectiveIndex >= 3;
+  const slotActive = effectiveIndex >= 4;
+  const confirmed = effectiveIndex >= 5;
 
   return (
     <div className={flowStyles.heroFlow} data-testid="v5-hero-sequence" data-phase={phase}>
