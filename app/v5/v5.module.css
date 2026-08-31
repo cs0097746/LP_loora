@@ -1,0 +1,663 @@
+.page {
+  --v5-canvas: #f7f6f2;
+  --v5-surface: #fbfaf7;
+  --v5-ink: #17191c;
+  --v5-muted: #656a70;
+  --v5-line: rgba(23, 25, 28, 0.11);
+  --v5-line-strong: rgba(23, 25, 28, 0.2);
+  --v5-blue: #316dbd;
+  --v5-blue-deep: #214f88;
+  --v5-green: #7ed957;
+  min-height: 100vh;
+  overflow: clip;
+  background: var(--v5-canvas);
+  color: var(--v5-ink);
+}
+
+.shell {
+  width: min(calc(100% - 64px), 1280px);
+  margin-inline: auto;
+}
+
+.header {
+  position: relative;
+  z-index: 10;
+  border-bottom: 1px solid var(--v5-line);
+  background: rgba(247, 246, 242, 0.94);
+}
+
+.headerInner {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--v5-ink);
+  text-decoration: none;
+}
+
+.brandMark {
+  position: relative;
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+}
+
+.brandMark i {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+
+.brandMark i:first-child {
+  top: 1px;
+  left: 1px;
+  background: var(--v5-green);
+}
+
+.brandMark i:last-child {
+  right: 1px;
+  bottom: 1px;
+  background: var(--v5-blue);
+}
+
+.brandWord {
+  font-family: var(--font-display), sans-serif;
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -0.035em;
+}
+
+.brandContext {
+  padding-left: 10px;
+  border-left: 1px solid var(--v5-line-strong);
+  color: var(--v5-muted);
+  font-size: 13px;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.loginLink,
+.headerCta,
+.primaryAction {
+  text-decoration: none;
+}
+
+.loginLink {
+  color: var(--v5-muted);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.headerCta {
+  padding: 10px 14px;
+  border: 1px solid var(--v5-line-strong);
+  border-radius: 5px;
+  background: var(--v5-surface);
+  color: var(--v5-ink);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.hero {
+  min-height: 820px;
+  display: grid;
+  align-items: center;
+  border-bottom: 1px solid var(--v5-line);
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.86fr) minmax(560px, 1.14fr);
+  gap: clamp(52px, 5vw, 92px);
+  align-items: center;
+}
+
+.heroCopy {
+  padding-block: 96px;
+}
+
+.eyebrow,
+.stageLabel {
+  margin: 0;
+  font-family: var(--font-mono), monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.eyebrow {
+  margin-bottom: 24px;
+  color: var(--v5-blue-deep);
+}
+
+.heroCopy h1 {
+  max-width: 720px;
+  margin: 0;
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(54px, 5.1vw, 80px);
+  line-height: 0.98;
+  letter-spacing: -0.052em;
+  font-weight: 610;
+}
+
+.heroBody {
+  max-width: 590px;
+  margin: 28px 0 0;
+  color: var(--v5-muted);
+  font-size: 19px;
+  line-height: 1.55;
+}
+
+.primaryAction {
+  width: fit-content;
+  margin-top: 34px;
+  padding: 13px 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 18px;
+  border-radius: 5px;
+  background: var(--v5-ink);
+  color: var(--v5-surface);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.heroStage {
+  position: relative;
+  min-height: 620px;
+  padding: 54px 30px 24px;
+  overflow: hidden;
+  border-left: 1px solid var(--v5-line);
+  border-right: 1px solid var(--v5-line);
+  background-image:
+    linear-gradient(var(--v5-line) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(23, 25, 28, 0.055) 1px, transparent 1px);
+  background-size: 100% 88px, 96px 100%;
+}
+
+.stageLabel {
+  position: absolute;
+  top: 20px;
+  left: 22px;
+  color: var(--v5-muted);
+}
+
+.heroFlow {
+  position: relative;
+  min-height: 510px;
+}
+
+.flowThread {
+  position: absolute;
+  top: 44px;
+  bottom: 34px;
+  left: 46%;
+  width: 12px;
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+.flowNode {
+  position: absolute;
+  z-index: 2;
+}
+
+.nodeSignal {
+  position: absolute;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--v5-canvas);
+}
+
+.flowSession {
+  top: 18px;
+  left: 46%;
+  width: 240px;
+  transform: translateX(-50%);
+}
+
+.flowSession .nodeSignal {
+  left: 50%;
+  bottom: -27px;
+  transform: translateX(-50%);
+}
+
+.flowMessage {
+  top: 130px;
+  left: 0;
+  width: min(300px, 48%);
+}
+
+.flowMessage::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: -30%;
+  width: 30%;
+  border-top: 1px solid var(--v5-line-strong);
+}
+
+.flowMessage .nodeSignal {
+  top: calc(50% - 6px);
+  right: -31%;
+}
+
+.flowContact {
+  top: 220px;
+  right: 4px;
+  width: min(238px, 40%);
+}
+
+.flowContact::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -47%;
+  width: 47%;
+  border-top: 1px solid var(--v5-line-strong);
+}
+
+.flowContact .nodeSignal {
+  top: calc(50% - 6px);
+  left: -48%;
+}
+
+.flowNextStep {
+  top: 334px;
+  left: 46%;
+  width: 248px;
+  transform: translateX(-18%);
+}
+
+.flowNextStep .nodeSignal {
+  top: 24px;
+  left: -14px;
+}
+
+.flowSlot {
+  right: 0;
+  bottom: 10px;
+  width: 210px;
+}
+
+.flowSlot::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: -65%;
+  width: 65%;
+  border-top: 1px solid var(--v5-line-strong);
+}
+
+.flowSlot .nodeSignal {
+  top: calc(50% - 6px);
+  left: -66%;
+}
+
+.sessionRail {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 10px 12px;
+  border-top: 1px solid var(--v5-line-strong);
+  border-bottom: 1px solid var(--v5-line-strong);
+  background: rgba(247, 246, 242, 0.9);
+  font-family: var(--font-mono), monospace;
+  color: var(--v5-ink);
+}
+
+.sessionRail span {
+  font-size: 12px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.sessionRail small {
+  color: var(--v5-muted);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.stageFooter {
+  position: absolute;
+  right: 22px;
+  bottom: 14px;
+  left: 22px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 10px;
+  align-items: center;
+  color: var(--v5-muted);
+  font-family: var(--font-mono), monospace;
+  font-size: 9px;
+  letter-spacing: 0.06em;
+}
+
+.stageFooter i {
+  height: 1px;
+  background: var(--v5-line);
+}
+
+.header a:focus-visible,
+.hero a:focus-visible {
+  outline: 2px solid var(--v5-blue);
+  outline-offset: 3px;
+}
+
+.signal {
+  width: 8px;
+  height: 8px;
+  display: inline-block;
+  flex: 0 0 auto;
+  border: 1px solid var(--v5-line-strong);
+  border-radius: 50%;
+  background: var(--v5-surface);
+}
+
+.signalActive {
+  border-color: #5f9f43;
+  background: var(--v5-green);
+}
+
+.thread {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
+
+.thread path {
+  fill: none;
+  stroke: var(--v5-line-strong);
+  stroke-width: 1;
+}
+
+.threadActive path {
+  stroke: var(--v5-blue);
+}
+
+.adminMessage,
+.contactObject,
+.appointmentSlot,
+.nextStepObject {
+  min-width: 0;
+  padding: 14px 15px;
+  border: 1px solid var(--v5-line-strong);
+  border-radius: 6px;
+  background: var(--v5-surface);
+  box-shadow: 0 1px 2px rgba(23, 25, 28, 0.035);
+}
+
+.adminMessage {
+  max-width: 310px;
+}
+
+.adminMessage p {
+  margin: 12px 0 0;
+  font-size: 15px;
+  line-height: 1.45;
+}
+
+.contactObject,
+.appointmentSlot,
+.nextStepObject {
+  display: grid;
+  gap: 7px;
+}
+
+.contactObject strong,
+.appointmentSlot strong,
+.nextStepObject strong {
+  font-family: var(--font-display), sans-serif;
+  font-size: 18px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.contactObject small,
+.appointmentSlot small,
+.nextStepObject small {
+  color: var(--v5-muted);
+  font-size: 12px;
+}
+
+.nextStepObject {
+  border-left: 2px solid var(--v5-blue);
+}
+
+.objectTopline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  color: var(--v5-muted);
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  line-height: 1.3;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.objectTopline time {
+  color: var(--v5-ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.statusLabel {
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--v5-muted);
+  font-family: var(--font-mono), monospace;
+  font-size: 10px;
+  line-height: 1.2;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  white-space: nowrap;
+}
+
+.statusLabel::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.statusLabel[data-state='confirmado'] {
+  color: #3f7830;
+}
+
+.statusLabel[data-state='novo'],
+.statusLabel[data-state='proximo-passo'] {
+  color: var(--v5-blue-deep);
+}
+
+@media (max-width: 1120px) {
+  .heroGrid {
+    grid-template-columns: minmax(0, 0.9fr) minmax(500px, 1.1fr);
+    gap: 36px;
+  }
+
+  .heroCopy h1 {
+    font-size: clamp(52px, 5.8vw, 70px);
+  }
+}
+
+@media (max-width: 980px) {
+  .heroGrid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .heroCopy {
+    padding: 84px 0 20px;
+  }
+
+  .heroStage {
+    min-height: 620px;
+    margin-bottom: 72px;
+  }
+}
+
+@media (max-width: 760px) {
+  .shell {
+    width: min(calc(100% - 36px), 1280px);
+  }
+
+  .headerInner {
+    min-height: 64px;
+    gap: 18px;
+  }
+
+  .brandContext,
+  .loginLink {
+    display: none;
+  }
+
+  .headerCta {
+    padding: 9px 11px;
+    font-size: 13px;
+  }
+
+  .hero {
+    min-height: auto;
+  }
+
+  .heroCopy {
+    padding: 74px 0 26px;
+  }
+
+  .heroCopy h1 {
+    max-width: 620px;
+    font-size: clamp(44px, 13vw, 62px);
+    line-height: 0.99;
+    letter-spacing: -0.047em;
+  }
+
+  .heroBody {
+    margin-top: 22px;
+    font-size: 17px;
+  }
+
+  .primaryAction {
+    margin-top: 28px;
+  }
+
+  .heroStage {
+    min-height: auto;
+    margin: 16px 0 64px;
+    padding: 58px 0 34px;
+    overflow: visible;
+    border-left: 0;
+    border-right: 0;
+    border-top: 1px solid var(--v5-line);
+    border-bottom: 1px solid var(--v5-line);
+    background-image: linear-gradient(var(--v5-line) 1px, transparent 1px);
+    background-size: 100% 84px;
+  }
+
+  .stageLabel {
+    left: 0;
+  }
+
+  .heroFlow {
+    min-height: auto;
+    padding: 14px 0 10px 42px;
+    display: grid;
+    gap: 28px;
+  }
+
+  .flowThread {
+    top: 34px;
+    bottom: 28px;
+    left: 11px;
+    width: 12px;
+    transform: none;
+  }
+
+  .flowNode {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    transform: none;
+  }
+
+  .nodeSignal,
+  .flowSession .nodeSignal,
+  .flowMessage .nodeSignal,
+  .flowContact .nodeSignal,
+  .flowNextStep .nodeSignal,
+  .flowSlot .nodeSignal {
+    top: 18px;
+    right: auto;
+    bottom: auto;
+    left: -37px;
+    transform: none;
+  }
+
+  .flowMessage::after,
+  .flowContact::before,
+  .flowSlot::before {
+    display: none;
+  }
+
+  .sessionRail {
+    width: 100%;
+    padding: 11px 0;
+    background: transparent;
+  }
+
+  .sessionRail span,
+  .sessionRail small,
+  .objectTopline,
+  .statusLabel {
+    font-size: 11px;
+  }
+
+  .contactObject small,
+  .appointmentSlot small,
+  .nextStepObject small {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .adminMessage,
+  .contactObject,
+  .appointmentSlot,
+  .nextStepObject {
+    width: 100%;
+    max-width: none;
+  }
+
+  .adminMessage p {
+    font-size: 15px;
+  }
+
+  .stageFooter {
+    right: 0;
+    left: 0;
+    font-size: 10px;
+  }
+}
