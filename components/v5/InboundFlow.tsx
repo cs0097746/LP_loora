@@ -4,12 +4,13 @@ import { ContactObject } from '@/components/v5/visual/ContactObject';
 import { Signal } from '@/components/v5/visual/Signal';
 import { StatusLabel } from '@/components/v5/visual/StatusLabel';
 import { V5_HERO, V5_INBOUND } from '@/content/v5';
-import styles from '@/app/v5/v5.module.css';
+import baseStyles from '@/app/v5/v5.module.css';
+import styles from '@/app/v5/v5-story.module.css';
 
 export function InboundFlow() {
   return (
     <section className={styles.inbound} id="fluxo" aria-labelledby="v5-inbound-title" data-testid="v5-inbound">
-      <div className={styles.shell}>
+      <div className={baseStyles.shell}>
         <div className={styles.inboundGrid}>
           <div className={styles.sectionCopy}>
             <p className={styles.sectionEyebrow}>CONTEXTO · ESTADO · PRÓXIMO PASSO</p>
@@ -38,8 +39,8 @@ export function InboundFlow() {
             <div className={styles.inboundNode} data-kind="proximo-passo">
               <span className={styles.inboundSignal} aria-hidden="true"><Signal active /></span>
               <small className={styles.inboundStep}>03 · próximo passo</small>
-              <article className={styles.nextStepObject}>
-                <div className={styles.objectTopline}>
+              <article className={baseStyles.nextStepObject}>
+                <div className={baseStyles.objectTopline}>
                   <span>PRÓXIMO PASSO</span>
                   <StatusLabel state="proximo-passo" />
                 </div>
