@@ -1,49 +1,40 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 import HomePage from '@/app/page';
 
-describe('landing page V4', () => {
-  it('tells a compact pain-first product story with real product proof', () => {
-    render(<HomePage />);
+describe('landing page V5 home cutover', () => {
+  it('serves the complete V5 narrative from the production home route', () => {
+    const { container } = render(<HomePage />);
 
     expect(
       screen.getByRole('heading', {
         level: 1,
-        name: /você entra em sessão\. o whatsapp não para\./i,
+        name: /sua atenção está na sessão\. a rotina continua acontecendo\./i,
       }),
     ).toBeInTheDocument();
 
-    expect(screen.getByTestId('v4-hero-product')).toHaveAttribute('src', '/product-v4/kanban-left.webp');
-    expect(
-      screen.getByRole('heading', {
-        name: /o problema não é falta de organização\. é que sua atenção já tem dono\./i,
-      }),
-    ).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: /tudo que chega encontra um lugar\./i })).toBeInTheDocument();
+    expect(screen.getByTestId('v5-pressure')).toBeInTheDocument();
+    expect(screen.getByTestId('v5-inbound')).toBeInTheDocument();
+    expect(screen.getByTestId('v5-week')).toBeInTheDocument();
+    expect(screen.getByTestId('v5-proof-kanban')).toHaveAttribute('src', '/product-v4/kanban-left.webp');
+    expect(screen.getByTestId('v5-proof-history')).toHaveAttribute('src', '/product-v4/contact-history.webp');
 
-    expect(screen.getAllByText('14:32').length).toBeGreaterThanOrEqual(1);
-    expect(screen.getAllByText('14:35').length).toBeGreaterThanOrEqual(1);
-    expect(screen.getAllByText('14:40').length).toBeGreaterThanOrEqual(1);
+    expect(screen.getByRole('heading', { name: /leora: uma fronteira clara\./i })).toBeInTheDocument();
+    expect(screen.getAllByText(/avaliação, decisão e conduta clínica continuam com você/i).length).toBeGreaterThanOrEqual(1);
 
-    expect(screen.getByRole('heading', { name: /o repetitivo não precisa disputar sua atenção\./i })).toBeInTheDocument();
-    expect(screen.getByText('VOCÊ DECIDE')).toBeInTheDocument();
-    expect(screen.getAllByText(/avaliação, decisão e conduta clínica continuam com você\./i).length).toBeGreaterThanOrEqual(1);
+    const endOfDay = screen.getByTestId('v5-end-of-day');
+    expect(within(endOfDay).getByText('EXEMPLO ILUSTRATIVO')).toBeInTheDocument();
 
-    expect(screen.getByRole('heading', { name: /você não precisa lembrar onde aquela conversa parou\./i })).toBeInTheDocument();
-    expect(screen.getByText('QUANDO')).toBeInTheDocument();
-    expect(screen.getByText('ENTÃO')).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: /você olha uma vez e sabe o que está acontecendo\./i })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { name: /quanto da sua semana ainda está preso no operacional\?/i })).toBeInTheDocument();
+    expect(container.querySelector('#demo')).not.toBeNull();
+    expect(screen.getByRole('button', { name: /quero ver a loomie na minha rotina/i })).toBeInTheDocument();
   });
 
-  it('keeps conversion paths, human boundaries and the existing lead form', () => {
-    render(<HomePage />);
+  it('keeps real product proof distinct from illustrative examples and avoids unsupported claims', () => {
+    const { container } = render(<HomePage />);
 
-    expect(screen.getByRole('link', { name: /ver como funciona na minha clínica/i })).toHaveAttribute('href', '#demo');
-    expect(screen.getByRole('button', { name: /quero ver a loomie na minha rotina/i })).toBeInTheDocument();
-    expect(screen.getByText(/automação para o administrativo/i)).toBeInTheDocument();
-
-    expect(
-      screen.queryByText(/100% lgpd|criptografia ponta-a-ponta|em conformidade com o cfp|20 horas|4 a 5 horas/i),
-    ).not.toBeInTheDocument();
+    expect(screen.getAllByText('CAPTURA REAL DO PRODUTO')).toHaveLength(2);
+    expect(screen.getAllByText(/EXEMPLO ILUSTRATIVO/i).length).toBeGreaterThanOrEqual(2);
+    expect(container.textContent).not.toMatch(
+      /100% lgpd|criptografia ponta-a-ponta|em conformidade com o cfp|20 horas|4 a 5 horas|\d+% de economia/i,
+    );
   });
 });
