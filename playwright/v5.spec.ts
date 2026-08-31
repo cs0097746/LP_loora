@@ -121,3 +121,19 @@ test('V5 mobile hero keeps object labels and supporting text legible', async ({ 
   await expectMinimumFontSize(page.getByTestId('v5-slot').getByText('HORÁRIO', { exact: true }), 11);
   await expectMinimumFontSize(page.getByTestId('v5-slot').getByText('agenda', { exact: true }), 14);
 });
+
+test('V5 Gate D first-scroll story stays composed on desktop and mobile', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 1100 });
+  await page.goto('/v5');
+  await expect(page.getByTestId('v5-pressure')).toBeVisible();
+  await expect(page.getByTestId('v5-inbound')).toBeVisible();
+  await expectNoDocumentOverflow(page);
+  await page.screenshot({ path: 'test-results/v5-first-three-desktop.png', fullPage: true });
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto('/v5');
+  await page.getByTestId('v5-inbound').scrollIntoViewIfNeeded();
+  await expect(page.getByRole('heading', { name: /uma coisa chega\. ela sabe para onde ir\./i })).toBeVisible();
+  await expectNoDocumentOverflow(page);
+  await page.screenshot({ path: 'test-results/v5-first-three-mobile.png', fullPage: true });
+});
