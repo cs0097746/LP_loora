@@ -87,6 +87,20 @@ test('V5 hero causal sequence reaches a stable confirmed state', async ({ page }
   await expect(sequence).toHaveAttribute('data-phase', 'confirmed', { timeout: 8_500 });
 });
 
+test('V5 motion visually reveals future objects while keeping them mounted', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto('/v5');
+
+  const contact = page.getByTestId('v5-contact');
+  await expect(contact).toBeAttached();
+  const initialOpacity = await contact.evaluate((element) => Number.parseFloat(getComputedStyle(element).opacity));
+  expect(initialOpacity).toBeLessThan(0.8);
+
+  await expect(page.getByTestId('v5-hero-sequence')).toHaveAttribute('data-phase', 'confirmed', { timeout: 8_500 });
+  const finalOpacity = await contact.evaluate((element) => Number.parseFloat(getComputedStyle(element).opacity));
+  expect(finalOpacity).toBeGreaterThanOrEqual(0.99);
+});
+
 test('V5 hero honors reduced motion by settling immediately', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await page.setViewportSize({ width: 390, height: 844 });
