@@ -19,7 +19,7 @@ it('completes the V5 narrative with real proof, clear boundaries and the existin
   expect(screen.getAllByText('CAPTURA REAL DO PRODUTO')).toHaveLength(2);
 
   expect(screen.getByRole('heading', { name: /leora: uma fronteira clara\./i })).toBeVisible();
-  expect(screen.getByText(/rotinas administrativas configuradas/i)).toBeVisible();
+  expect(screen.getByText('A Leora ajuda nas rotinas administrativas configuradas no Loomie e sinaliza quando o próximo passo exige você.')).toBeVisible();
   expect(screen.getByText(/avaliação, decisão e conduta clínica continuam com você/i)).toBeVisible();
 
   const endOfDay = screen.getByTestId('v5-end-of-day');
