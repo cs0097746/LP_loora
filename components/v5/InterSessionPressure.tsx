@@ -1,12 +1,13 @@
 import { V5_PRESSURE_ITEMS } from '@/content/v5';
-import styles from '@/app/v5/v5.module.css';
+import baseStyles from '@/app/v5/v5.module.css';
+import styles from '@/app/v5/v5-story.module.css';
 
 const PRESSURE_TIMES = ['14:52', '14:54', '14:56', '14:58', '15:00'] as const;
 
 export function InterSessionPressure() {
   return (
     <section className={styles.pressure} id="entre-sessoes" aria-labelledby="v5-pressure-title" data-testid="v5-pressure">
-      <div className={styles.shell}>
+      <div className={baseStyles.shell}>
         <div className={styles.pressureGrid}>
           <div className={styles.sectionCopy}>
             <p className={styles.sectionEyebrow}>ENTRE SESSÕES · O ACÚMULO</p>
