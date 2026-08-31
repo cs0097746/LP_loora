@@ -1,6 +1,7 @@
 import { expect, type Locator, type Page, test } from '@playwright/test';
 
 async function expectSharpImage(image: Locator, minimumRatio = 1) {
+  await image.scrollIntoViewIfNeeded();
   await expect(image).toBeVisible();
   await expect.poll(
     () => image.evaluate((node) => (node as HTMLImageElement).naturalWidth),
@@ -85,5 +86,5 @@ test('production lead form explains missing fields instead of silently failing',
   await expect(page.getByText('Informe seu nome.')).toBeVisible();
   await expect(page.getByText('Informe um WhatsApp com DDD.')).toBeVisible();
   await expect(page.getByText('Selecione uma faixa de atendimentos.')).toBeVisible();
-  await expect(page.getByText(/Não envie informações clínicas de pacientes/i)).toBeVisible();
+  await expect(page.getByText('Não envie informações clínicas de pacientes neste formulário.')).toBeVisible();
 });
